@@ -1,8 +1,13 @@
 package com.ruoyi.common.core.domain;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.HashMap;
 import com.ruoyi.common.constant.HttpStatus;
+import com.ruoyi.common.enums.Sex;
 import com.ruoyi.common.utils.StringUtils;
+import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
 /**
  * 操作消息提醒
@@ -51,6 +56,13 @@ public class AjaxResult extends HashMap<String, Object>
     public AjaxResult(int code, String msg, Object data)
     {
         super.put(CODE_TAG, code);
+        super.put(MSG_TAG, msg);
+        super.put("jindu-122222222222222789-共19位long", 122222222222222789L);
+        super.put("int显示不变还是显示int", 67);
+        super.put("LocalTime 日期", LocalTime.now());
+        super.put("LocalDate日期", LocalDate.now());
+        super.put("LocalDateTime 日期", LocalDateTime.now());
+        super.put("sexEnum", Sex.M);
         super.put(MSG_TAG, msg);
         if (StringUtils.isNotNull(data))
         {

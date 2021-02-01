@@ -32,7 +32,7 @@ public class RuoYiApplication
                 " ''-'   `'-'    `-..-'              ");
 
 
-        car bean = SpringUtils.getBean(car.class);
+//        car bean = SpringUtils.getBean(car.class);
 
     }
 }
