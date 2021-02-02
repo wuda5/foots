@@ -9,6 +9,7 @@ public class superCar implements car {
 
     @Override
     public int speed() {
+        System.out.println("test----------------------");
         return 99999;
     }
 }
