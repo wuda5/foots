@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.card.dao.CardRepGasRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.card.entity.CardRepGasRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="CHAR" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="card_no" jdbcType="VARCHAR" property="cardNo"/>
+        <result column="gas_meter_code" jdbcType="VARCHAR" property="gasMeterCode"/>
+        <result column="rep_gas_method" jdbcType="VARCHAR" property="repGasMethod"/>
+        <result column="rep_gas" jdbcType="DECIMAL" property="repGas"/>
+        <result column="rep_money" jdbcType="DECIMAL" property="repMoney"/>
+        <result column="rep_gas_desc" jdbcType="VARCHAR" property="repGasDesc"/>
+        <result column="rep_gas_status" jdbcType="VARCHAR" property="repGasStatus"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, card_no, gas_meter_code, rep_gas_method, rep_gas, rep_money, rep_gas_desc, rep_gas_status, data_status
+    </sql>
+
+    <select id="queryFocusInfo" parameterType="java.lang.String" resultType="com.cdqckj.gmis.card.entity.CardRepGasRecord">
+        select
+            a.id,
+            a.create_time,
+            a.create_user,
+            a.update_time,
+            a.update_user,
+            a.company_code,
+            a.company_name,
+            a.org_id,
+            a.org_name,
+            a.business_hall_id,
+            a.business_hall_name,
+            a.card_no,
+            a.gas_meter_code,
+            a.rep_gas_method,
+            a.rep_gas,
+            a.rep_money,
+            a.rep_gas_desc,
+            a.rep_gas_status
+        from gt_card_rep_gas_record a
+        LEFT JOIN da_customer_gas_meter_related c on c.gas_meter_code = a.gas_meter_code AND c.data_status = '1'
+        WHERE
+        a.data_status = 1
+        AND c.customer_code = #{customerCode}
+        <if test="gasMeterCode != null and gasMeterCode !=''">
+            AND a.gas_meter_code = #{gasMeterCode}
+        </if>
+    </select>
+</mapper>

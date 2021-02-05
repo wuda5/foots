@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.statistics.dao.FeiDayMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.statistics.entity.FeiDay">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="t_code" jdbcType="VARCHAR" property="tCode"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="business_hall_id" jdbcType="BIGINT" property="businessHallId"/>
+        <result column="create_user_id" jdbcType="BIGINT" property="createUserId"/>
+        <result column="total_number" jdbcType="INTEGER" property="totalNumber"/>
+        <result column="type" jdbcType="TINYINT" property="type"/>
+        <result column="online" jdbcType="TINYINT" property="online"/>
+        <result column="charge_item_source_code" jdbcType="VARCHAR" property="chargeItemSourceCode"/>
+        <result column="charge_method_code" jdbcType="VARCHAR" property="chargeMethodCode"/>
+        <result column="charge_item_money" jdbcType="DECIMAL" property="chargeItemMoney"/>
+        <result column="amount" jdbcType="INTEGER" property="amount"/>
+        <result column="sts_day" jdbcType="TIMESTAMP" property="stsDay"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        t_code, company_code, org_id, business_hall_id, create_user_id, total_number, type, online, charge_item_source_code, charge_method_code, charge_item_money, amount, sts_day
+    </sql>
+
+    <select id="getNowRecord" resultType="com.cdqckj.gmis.statistics.entity.FeiDay">
+        SELECT * FROM sts_fei_day ${sql}
+    </select>
+
+    <select id="stsNow" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+            SUM(charge_item_money) amount,
+            charge_method_code type
+        FROM
+            sts_fei_day
+        WHERE 1 = 1
+        <if test="searchSql != null and searchSql != ''">
+            ${searchSql}
+        </if>
+        <if test="type != null and type != ''">
+            AND type = #{type}
+        </if>
+        GROUP BY charge_method_code
+    </select>
+
+    <select id="chargeFeeType" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+           SUM(charge_item_money) amount,
+           charge_item_source_code type
+        FROM
+            sts_fei_day
+        WHERE 1 = 1
+        <if test="searchSql != null and searchSql != ''">
+            ${searchSql}
+        </if>
+        <if test="type != null and type != ''">
+            AND type = #{type}
+        </if>
+        GROUP BY charge_item_source_code
+    </select>
+
+    <select id="chargeFeeByPayType" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+            SUM(charge_item_money) amount,
+            charge_method_code type
+        FROM
+            sts_fei_day
+        WHERE 1 = 1
+        <if test="searchSql != null and searchSql != ''">
+            ${searchSql}
+        </if>
+        <if test="type != null and type != ''">
+            AND type = #{type}
+        </if>
+        GROUP BY charge_method_code
+    </select>
+
+    <select id="changeFeeTotal" resultType="java.math.BigDecimal">
+        SELECT
+            SUM(charge_item_money)
+        FROM
+            sts_fei_day
+        WHERE 1 = 1
+        <if test="searchSql != null and searchSql != ''">
+            ${searchSql}
+        </if>
+    </select>
+
+</mapper>

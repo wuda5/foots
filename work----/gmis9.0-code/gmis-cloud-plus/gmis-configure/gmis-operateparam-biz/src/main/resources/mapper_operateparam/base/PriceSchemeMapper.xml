@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.operateparam.dao.PriceSchemeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="company_code" jdbcType="CHAR" property="companyId"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="use_gas_type_id" jdbcType="CHAR" property="useGasTypeId"/>
+        <result column="compensation_price" jdbcType="DECIMAL" property="compensationPrice"/>
+        <result column="gas_1" jdbcType="INTEGER" property="gas1"/>
+        <result column="price_1" jdbcType="DECIMAL" property="price1"/>
+        <result column="gas_2" jdbcType="INTEGER" property="gas2"/>
+        <result column="price_2" jdbcType="DECIMAL" property="price2"/>
+        <result column="gas_3" jdbcType="INTEGER" property="gas3"/>
+        <result column="price_3" jdbcType="DECIMAL" property="price3"/>
+        <result column="gas_4" jdbcType="INTEGER" property="gas4"/>
+        <result column="price_4" jdbcType="DECIMAL" property="price4"/>
+        <result column="gas_5" jdbcType="INTEGER" property="gas5"/>
+        <result column="price_5" jdbcType="DECIMAL" property="price5"/>
+        <result column="gas_6" jdbcType="INTEGER" property="gas6"/>
+        <result column="price_6" jdbcType="DECIMAL" property="price6"/>
+        <result column="gas_7" jdbcType="INTEGER" property="gas7"/>
+        <result column="price_7" jdbcType="DECIMAL" property="price7"/>
+        <result column="price_num" jdbcType="INTEGER" property="priceNum"/>
+        <result column="start_time" jdbcType="DATE" property="startTime"/>
+        <result column="end_time" jdbcType="DATE" property="endTime"/>
+        <result column="cycle_start_time" jdbcType="DATE" property="cycleStartTime"/>
+        <result column="cycle_enable_date" jdbcType="DATE" property="cycleEnableDate"/>
+        <result column="start_month" jdbcType="SMALLINT" property="start_month"/>
+        <result column="settlement_day" jdbcType="SMALLINT" property="settlementDay"/>
+        <result column="cycle" jdbcType="SMALLINT" property="cycle"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+        <result column="price_change_is_clear" jdbcType="SMALLINT" property="priceChangeIsClear"/>
+        <result column="fixed_price" jdbcType="DECIMAL" property="fixedPrice"/>
+        <result column="is_heating" jdbcType="SMALLINT" property="isHeating"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,price_num,
+        company_code, company_name, org_id, use_gas_type_id, compensation_price, gas_1, price_1, gas_2, price_2, gas_3, price_3, gas_4, price_4, gas_5, price_5, gas_6, price_6,
+        gas_7, price_7, start_time, end_time, cycle_start_time, start_month, settlement_day, cycle, data_status,is_heating,fixed_price,price_change_is_clear,cycle_enable_date
+    </sql>
+
+    <select id="queryRecentRecord" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        SELECT  <include refid="Base_Column_List"/> FROM pz_price_scheme where is_heating = 0 and use_gas_type_id = #{useGasTypeId} ORDER BY id desc  LIMIT 1
+    </select>
+    <select id="queryRecentHeatingRecord" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        SELECT  <include refid="Base_Column_List"/> FROM pz_price_scheme where is_heating = 1 and use_gas_type_id = #{useGasTypeId} ORDER BY id desc  LIMIT 1
+    </select>
+    <update id="updatePriceStatus">
+        update pz_price_scheme set data_status = 0 where data_status = 1
+    </update>
+    <select id="queryRecentRecordByTime" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+
+        SELECT  <include refid="Base_Column_List"/> FROM pz_price_scheme where use_gas_type_id = #{useGasTypeId} and start_time &lt;= #{activateDate} ORDER BY start_time desc,create_time desc  LIMIT 1
+    </select>
+
+    <select id="queryPriceByTime" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        SELECT  <include refid="Base_Column_List"/>
+        FROM pz_price_scheme
+        where use_gas_type_id = #{useGasTypeId} and start_time &lt;= #{activateDate}
+        and is_heating = 0
+        ORDER BY start_time desc  LIMIT 1
+    </select>
+
+    <select id="queryPriceHeatingByTime" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        SELECT  <include refid="Base_Column_List"/>
+        FROM pz_price_scheme
+        where use_gas_type_id = #{useGasTypeId} and start_time &lt;= #{activateDate}
+        and is_heating = 1
+        ORDER BY start_time desc LIMIT 1
+    </select>
+
+    <select id="getAdvancePriceScheme" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        SELECT
+            *
+        FROM
+            pz_price_scheme
+        WHERE
+            use_gas_type_id = #{useGasTypeId} AND start_time > #{now}
+        ORDER BY start_time ASC  LIMIT 1
+    </select>
+
+    <select id="queryPrePriceScheme" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        SELECT  <include refid="Base_Column_List"/> FROM pz_price_scheme
+        where use_gas_type_id = #{useGasTypeId} and is_heating = 0 AND start_time &gt;= #{now}
+        ORDER BY start_time desc, create_time desc  LIMIT 1
+    </select>
+
+    <select id="queryPreHeatingPriceScheme" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        SELECT  <include refid="Base_Column_List"/> FROM pz_price_scheme
+        where use_gas_type_id = #{useGasTypeId} and is_heating = 1 AND start_time &gt;= #{now}
+        ORDER BY start_time desc, create_time desc  LIMIT 1
+    </select>
+
+    <select id="getPriceSchemeDuring" resultType="com.cdqckj.gmis.operateparam.entity.PriceScheme">
+        SELECT
+            *
+        FROM
+            pz_price_scheme pps INNER JOIN pz_use_gas_type pugt ON pps.use_gas_type_id = pugt.id
+        WHERE 1 = 1
+        <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+            AND pugt.company_code = #{stsSearchParam.companyCode}
+        </if>
+        <if test="stsSearchParam.orgId != null">
+            AND pugt.org_id = #{stsSearchParam.orgId}
+        </if>
+        <if test="priceType != null and priceType != ''">
+            AND pugt.price_type = #{priceType}
+        </if>
+    </select>
+
+</mapper>

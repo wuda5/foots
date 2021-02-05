@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.cdqckj.gmis</groupId>
+        <artifactId>gmis-admin-cloud</artifactId>
+        <version>c.2.3-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gmis-statistics</artifactId>
+    <name>${project.artifactId}</name>
+    <description>统计服务服务</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>gmis-statistics-api</module>
+        <module>gmis-statistics-entity</module>
+        <module>gmis-statistics-biz</module>
+        <module>gmis-statistics-controller</module>
+        <module>gmis-statistics-server</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-statistics-entity</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-statistics-biz</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-statistics-controller</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

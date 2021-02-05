@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.devicearchive.dao.GasMeterMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.devicearchive.entity.GasMeter">
+        <id property="id" jdbcType="BIGINT" column="id"/>
+
+        <result property="createUser" jdbcType="BIGINT" column="create_user"/>
+
+        <result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
+
+        <result property="updateUser" jdbcType="BIGINT" column="update_user"/>
+
+        <result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
+
+        <result property="gasCode" jdbcType="CHAR" column="gas_code"/>
+
+        <result property="companyCode" jdbcType="VARCHAR" column="company_code"/>
+
+        <result property="companyName" jdbcType="VARCHAR" column="company_name"/>
+
+        <result property="orgId" jdbcType="BIGINT" column="org_id"/>
+
+        <result property="orgName" jdbcType="VARCHAR" column="org_name"/>
+
+        <result property="gasMeterFactoryId" jdbcType="BIGINT" column="gas_meter_factory_id"/>
+
+
+
+        <result property="gasMeterModelId" jdbcType="BIGINT" column="gas_meter_model_id"/>
+
+
+
+        <result property="gasMeterVersionId" jdbcType="BIGINT" column="gas_meter_version_id"/>
+
+
+
+        <result property="installNumber" jdbcType="VARCHAR" column="install_number"/>
+
+        <result property="installTime" jdbcType="TIMESTAMP" column="install_time"/>
+
+
+        <result property="direction" jdbcType="VARCHAR" column="direction"/>
+
+        <result property="provinceCode" jdbcType="VARCHAR" column="province_code"/>
+
+        <result property="cityCode" jdbcType="VARCHAR" column="city_code"/>
+
+        <result property="areaCode" jdbcType="VARCHAR" column="area_code"/>
+
+        <result property="streetId" jdbcType="BIGINT" column="street_id"/>
+
+        <result property="communityId" jdbcType="BIGINT" column="community_id"/>
+
+        <result property="gasMeterAddress" jdbcType="VARCHAR" column="gas_meter_address"/>
+
+        <result property="moreGasMeterAddress" jdbcType="VARCHAR" column="more_gas_meter_address"/>
+
+        <result property="contractNumber" jdbcType="VARCHAR" column="contract_number"/>
+
+        <result property="useGasTypeCode" jdbcType="VARCHAR" column="use_gas_type_code"/>
+
+        <result property="useGasTypeId" jdbcType="BIGINT" column="use_gas_type_id"/>
+
+        <result property="useGasTypeName" jdbcType="VARCHAR" column="use_gas_type_name"/>
+
+        <result property="population" jdbcType="INTEGER" column="population"/>
+
+        <result property="nodeNumber" jdbcType="VARCHAR" column="node_number"/>
+
+        <result property="ventilateStatus" jdbcType="SMALLINT" column="ventilate_status"/>
+
+        <result property="ventilateUserId" jdbcType="BIGINT" column="ventilate_user_id"/>
+
+        <result property="ventilateUserName" jdbcType="VARCHAR" column="ventilate_user_name"/>
+
+        <result property="ventilateTime" jdbcType="TIMESTAMP" column="ventilate_time"/>
+
+        <result property="securityUserId" jdbcType="BIGINT" column="security_user_id"/>
+
+        <result property="securityUserName" jdbcType="VARCHAR" column="security_user_name"/>
+
+        <result property="longitude" jdbcType="DECIMAL" column="longitude"/>
+
+        <result property="latitude" jdbcType="DECIMAL" column="latitude"/>
+
+        <result property="stockId" jdbcType="BIGINT" column="stock_id"/>
+
+        <result property="gasMeterRealId" jdbcType="BIGINT" column=" gas_meter_real_id"/>
+
+        <result property="newSource" jdbcType="VARCHAR" column="new_source"/>
+
+        <result property="fileId" jdbcType="BIGINT" column="file_id"/>
+
+        <result property="gasMeterNumber" jdbcType="VARCHAR" column="gas_meter_number"/>
+
+
+        <result property="measurementAccuracy" jdbcType="SMALLINT" column="measurement_accuracy"/>
+
+        <result property="bankWithholding" jdbcType="SMALLINT" column="bank_withholding"/>
+
+        <result property="gasMeterBase" jdbcType="DECIMAL" column="gas_meter_base"/>
+
+        <result property="preBuiltTime" jdbcType="TIMESTAMP" column="pre_built_time"/>
+
+        <result property="safeCode" jdbcType="VARCHAR" column="safe_code"/>
+
+        <result property="buyTime" jdbcType="TIMESTAMP" column="buy_time"/>
+
+        <result property="preBuiltUserId" jdbcType="BIGINT" column="pre_built_user_id"/>
+
+        <result property="sendCardStauts" jdbcType="VARCHAR" column="send_card_stauts"/>
+
+        <result property="preBuiltUserName" jdbcType="VARCHAR" column="pre_built_user_name"/>
+
+        <result property="openAccountTime" jdbcType="TIMESTAMP" column="open_account_time"/>
+
+        <result property="openAccountUserName" jdbcType="VARCHAR" column="open_account_user_name"/>
+
+        <result property="remoteServiceFlag" jdbcType="VARCHAR" column="remote_service_flag"/>
+
+        <result property="openAccountUserId" jdbcType="BIGINT" column="open_account_user_id"/>
+
+        <result property="dataStatus" jdbcType="SMALLINT" column="data_status"/>
+
+        <result property="checkUser" jdbcType="VARCHAR" column="check_user"/>
+
+        <result property="checkTime" jdbcType="TIMESTAMP" column="check_time"/>
+
+        <result property="remark" jdbcType="VARCHAR" column="remark"/>
+
+        <result property="removeGasmeter" jdbcType="VARCHAR" column="remove_gasmeter"/>
+
+        <result property="deleteStatus" jdbcType="BIGINT" column="delete_status"/>
+    </resultMap>
+    <resultMap id="resultMapEx" type="com.cdqckj.gmis.devicearchive.dto.GasMeterExVo" extends="BaseResultMap">
+        <result property="totalUseGas" jdbcType="DECIMAL" column="totalUseGas"/>
+        <result property="customerCode" jdbcType="VARCHAR" column="customer_code"/>
+        <result property="customerName" jdbcType="VARCHAR" column="customer_name"/>
+        <result property="orderSourceName" jdbcType="VARCHAR" column="order_source_name"/>
+        <result property="amountMark" jdbcType="VARCHAR" column="amount_mark"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,install_number,install_time,send_card_stauts,gas_meter_real_id,
+        gas_code,company_code, company_name, org_id, org_name, gas_meter_factory_id, gas_meter_version_id,gas_meter_model_id,
+        direction,province_code, city_code, area_code, street_id, community_id, gas_meter_address, more_gas_meter_address,contract_number, use_gas_type_id,use_gas_type_code, use_gas_type_name, population, node_number,
+        ventilate_status, ventilate_user_id, ventilate_user_name, ventilate_time,buy_time,safe_code,
+        security_user_id, security_user_name, longitude, latitude, stock_id, new_source, file_id, gas_meter_number, measurement_accuracy, bank_withholding,
+        gas_meter_base, pre_built_time, pre_built_user_id, pre_built_user_name, open_account_time, open_account_user_name, open_account_user_id, data_status, check_user, check_time, remark, delete_status,remove_gasmeter
+    </sql>
+    <select id="findGasMeterNumber" resultType="java.lang.Integer" parameterType="com.cdqckj.gmis.devicearchive.vo.FactoryAndVersion">
+        SELECT count(*) from da_gas_meter a
+        where a.data_status !=5 and  a.gas_meter_factory_id = #{gasMeterFactoryId} and a.gas_meter_number =#{gasMeterNumber}
+
+    </select>
+
+    <select id="findGasInfo" resultType="java.util.HashMap">
+        SELECT
+        gas.gas_code gasCode,
+        cg.customer_charge_no customerChargeNo,
+        gas.company_code companyCode,
+        gas.company_name companyName,
+        gas.org_id orgId,
+        gas.org_name orgName,
+        gas.gas_meter_address gasMeterAddress,
+        gas.more_gas_meter_address moreGasMeterAddress,
+        gas.gas_meter_number gasMeterNumber,
+		gas.gas_meter_base gasMeterBase,
+
+        gas.use_gas_type_id useGasTypeId,
+        gas.use_gas_type_code useGasTypeCode,
+        gas.use_gas_type_name useGasTypeName,
+        gas.node_number nodeNumber,
+        gas.ventilate_status ventilateStatus,
+        gas.open_account_time openAccountTime,
+        gas.direction,
+        gas.ventilate_time ventilateTime,
+        gas.install_time installTime,
+        gas.longitude,
+        gas.latitude,
+
+        cus.customer_name customerName,
+        cus.customer_code customerCode,
+        cus.id customerId,
+        cus.telphone,
+		cus.customer_type_code customerTypeCode,
+
+        mi.total_use_gas totalUseGas,
+        mv.order_source_name  gasMeterTypeCode
+        FROM
+        da_gas_meter gas
+        LEFT JOIN da_customer_gas_meter_related cg on cg.gas_meter_code = gas.gas_code and cg.data_status = 1
+        LEFT JOIN da_customer cus on cus.customer_code = cg.customer_code
+        LEFT JOIN da_gas_meter_info mi on mi.gasmeter_code = gas.gas_code and mi.data_status=1
+        left JOIN pt_gas_meter_version mv on mv.id = gas.gas_meter_version_id
+        WHERE
+        gas.gas_code = #{gascode}
+    </select>
+
+    <select id="findGasMeterPageEx" resultType="com.cdqckj.gmis.devicearchive.vo.PageGasMeter">
+        SELECT
+        gm.id id,
+        gm.gas_code gasCode,
+        cg.customer_charge_no customerChargeNo,
+        cg.customer_code customerCode,
+        gm.gas_meter_number gasMeterNumber,
+        gm.install_number installNumber,
+
+        gm.buy_time buyTime,
+        gm.safe_code safeCode,
+        gm.remote_service_flag remoteServiceFlag,
+
+        mf.id gasMeterFactoryId,
+        mf.gas_meter_factory_name gasMeterFactoryName,
+        mv.id gasMeterVersionId,
+        mv.gas_meter_version_name gasMeterVersionName,
+        mv.order_source_name  orderSourceName,
+        mv.amount_mark amountMark,
+        mv.radix radix,
+        mm.id gasMeterModelId,
+        mm.model_name gasMeterModelName,
+
+        gm.company_code companyCode,
+        gm.company_name companyName,
+        gm.org_id orgId,
+        gm.org_name orgName,
+        gm.install_time installTime,
+        gm.direction,
+        gm.province_code provinceCode,
+        gm.city_code cityCode,
+        gm.area_code areaCode,
+        gm.street_id streetId,
+        gm.community_id communityId,
+        gm.community_name communityName,
+        gm.contract_number contractNumber,
+        gm.use_gas_type_id useGasTypeId,
+        gm.population,
+        gm.node_number nodeNumber,
+
+        gm.gas_meter_address gasMeterAddress,
+        gm.more_gas_meter_address moreGasMeterAddress,
+        gm.use_gas_type_code useGasTypeCode,
+        gm.use_gas_type_name useGasTypeName,
+        gm.ventilate_status ventilateStatus,
+        gm.ventilate_user_id ventilateUserId,
+        gm.ventilate_user_name ventilateUserName,
+        gm.ventilate_time ventilateTime,
+        gm.security_user_id securityUserId,
+        gm.security_user_name securityUserName,
+        gm.longitude,
+        gm.latitude,
+        gm.stock_id stockId,
+        gm.new_source newSource,
+        gm.file_id fileId,
+        gm.gas_meter_real_id gasMeterRealId,
+        gm.measurement_accuracy measurementAccuracy,
+        gm.bank_withholding bankWithholding,
+        gm.gas_meter_base gasMeterBase,
+        gm.pre_built_time preBuiltTime,
+        gm.pre_built_user_id preBuiltUserId,
+        gm.pre_built_user_name preBuiltUserName,
+        gm.open_account_time openAccountTime,
+        gm.open_account_user_name openAccountUserName,
+        gm.whether_pre_open_account whetherPreOpenAccount,
+        gm.pre_open_account_state preOpenAccountState,
+        gm.check_user checkUser,
+        gm.check_time checkTime,
+        gm.remark,
+        gm.start_ID startID,
+
+
+        gm.data_status dataStatus,
+        gm.send_card_stauts sendCardStatus,
+        gm.whether_pre_open_account whetherPreOpenAccount,
+
+        qw.device_state deviceState
+        FROM
+        da_gas_meter gm
+        left JOIN da_customer_gas_meter_related cg on cg.gas_meter_code=gm.gas_code and cg.data_status = 1
+        left JOIN pt_gas_meter_factory mf on mf.id = gm.gas_meter_factory_id
+        left JOIN pt_gas_meter_model mm on mm.id = gm.gas_meter_model_id
+        left JOIN pt_gas_meter_version mv on mv.id = gm.gas_meter_version_id
+        left join qw_iot_gas_meter_upload_data qw on qw.gas_meter_number=gm.gas_meter_number and qw.device_state !=4
+        ${ew.customSqlSegment}
+    </select>
+    <select id="findAdjustPriceGasMeterPage" resultType="com.cdqckj.gmis.devicearchive.vo.PageGasMeter">
+        SELECT
+        gm.id id,
+        gm.gas_code gasCode,
+        cg.customer_charge_no customerChargeNo,
+        cg.customer_code customerCode,
+        gm.gas_meter_number gasMeterNumber,
+        gm.install_number installNumber,
+        gm.buy_time buyTime,
+        gm.safe_code safeCode,
+        gm.remote_service_flag remoteServiceFlag,
+        mf.id gasMeterFactoryId,
+        mf.gas_meter_factory_name gasMeterFactoryName,
+        mv.id gasMeterVersionId,
+        mv.gas_meter_version_name gasMeterVersionName,
+        mv.order_source_name  orderSourceName,
+        mv.amount_mark amountMark,
+        mv.radix radix,
+        mm.id gasMeterModelId,
+        mm.model_name gasMeterModelName,
+        gm.company_code companyCode,
+        gm.company_name companyName,
+        gm.org_id orgId,
+        gm.org_name orgName,
+        gm.install_time installTime,
+        gm.direction,
+        gm.province_code provinceCode,
+        gm.city_code cityCode,
+        gm.area_code areaCode,
+        gm.street_id streetId,
+        gm.community_id communityId,
+        gm.community_name communityName,
+        gm.contract_number contractNumber,
+        gm.use_gas_type_id useGasTypeId,
+        gm.population,
+        gm.node_number nodeNumber,
+        gm.gas_meter_address gasMeterAddress,
+        gm.more_gas_meter_address moreGasMeterAddress,
+        gm.use_gas_type_code useGasTypeCode,
+        gm.use_gas_type_name useGasTypeName,
+        gm.ventilate_status ventilateStatus,
+        gm.ventilate_user_id ventilateUserId,
+        gm.ventilate_user_name ventilateUserName,
+        gm.ventilate_time ventilateTime,
+        gm.security_user_id securityUserId,
+        gm.security_user_name securityUserName,
+        gm.longitude,
+        gm.latitude,
+        gm.stock_id stockId,
+        gm.new_source newSource,
+        gm.file_id fileId,
+        gm.gas_meter_real_id gasMeterRealId,
+        gm.measurement_accuracy measurementAccuracy,
+        gm.bank_withholding bankWithholding,
+        gm.gas_meter_base gasMeterBase,
+        gm.pre_built_time preBuiltTime,
+        gm.pre_built_user_id preBuiltUserId,
+        gm.pre_built_user_name preBuiltUserName,
+        gm.open_account_time openAccountTime,
+        gm.open_account_user_name openAccountUserName,
+        gm.whether_pre_open_account whetherPreOpenAccount,
+        gm.pre_open_account_state preOpenAccountState,
+        gm.check_user checkUser,
+        gm.check_time checkTime,
+        gm.remark,
+        gm.start_ID startID,
+        gm.data_status dataStatus,
+        gm.send_card_stauts sendCardStatus,
+        gm.whether_pre_open_account whetherPreOpenAccount,
+        qw.device_state deviceState
+        FROM
+        da_gas_meter gm
+        left JOIN da_customer_gas_meter_related cg on cg.gas_meter_code=gm.gas_code and cg.data_status = 1
+        left JOIN pt_gas_meter_factory mf on mf.id = gm.gas_meter_factory_id
+        left JOIN pt_gas_meter_model mm on mm.id = gm.gas_meter_model_id
+        left JOIN pt_gas_meter_version mv on mv.id = gm.gas_meter_version_id
+        left join qw_iot_gas_meter_upload_data qw on qw.gas_meter_number=gm.gas_meter_number and qw.device_state !=4
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="findMeterByNumber" resultType="com.cdqckj.gmis.devicearchive.entity.GasMeter">
+        SELECT * FROM da_gas_meter WHERE gas_meter_number = #{number}
+    </select>
+
+    <select id="findGasMeterInfoByCodeEx" resultMap="resultMapEx">
+        SELECT
+        g.*,
+        gmr.customer_charge_no customerChargeNo,
+        gm.total_use_gas  totalUseGas,
+        cus.customer_name,
+        cus.customer_code,
+        mv.order_source_name,
+        mv.amount_mark
+        FROM
+        da_gas_meter g
+        left join da_gas_meter_info gm on gm.gasmeter_code = g.gas_code and gm.data_status = 1
+        LEFT join da_customer_gas_meter_related gmr on gmr.gas_meter_code = g.gas_code and gmr.data_status = 1
+        left JOIN da_customer cus on cus.customer_code = gmr.customer_code
+        LEFT JOIN pt_gas_meter_version mv on mv.id = g.gas_meter_version_id
+        <where>
+            g.gas_code = #{gasMeterCode}
+        </where>
+    </select>
+
+    <select id="findEffectiveMeterByNumber" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        da_gas_meter meter
+        WHERE
+        meter.delete_status = '0'
+        AND meter.data_status != 5
+        AND meter.gas_meter_number = #{gasMeterNumber}
+    </select>
+    <select id="findGasMeterBygasCode" resultType="com.cdqckj.gmis.devicearchive.vo.PageGasMeter" >
+        SELECT
+        gm.id id,
+        gm.gas_code gasCode,
+        gm.gas_meter_number gasMeterNumber,
+        gm.install_number installNumber,
+        gmr.customer_charge_no customerChargeNo,
+        gm.buy_time buyTime,
+        gm.safe_code safeCode,
+        gm.remote_service_flag remoteServiceFlag,
+
+        mf.id gasMeterFactoryId,
+        mf.gas_meter_factory_name gasMeterFactoryName,
+        mv.id gasMeterVersionId,
+        mv.gas_meter_version_name gasMeterVersionName,
+        mv.order_source_name  orderSourceName,
+        mv.amount_mark amountMark,
+        mv.radix radix,
+        mm.id gasMeterModelId,
+        mm.model_name gasMeterModelName,
+
+        gm.company_code companyCode,
+        gm.company_name companyName,
+        gm.org_id orgId,
+        gm.org_name orgName,
+        gm.install_time installTime,
+        gm.direction,
+        gm.province_code provinceCode,
+        gm.city_code cityCode,
+        gm.area_code areaCode,
+        gm.street_id streetId,
+        gm.community_id communityId,
+        gm.community_name communityName,
+        gm.contract_number contractNumber,
+        gm.use_gas_type_id useGasTypeId,
+        gm.population,
+        gm.node_number nodeNumber,
+
+        gm.gas_meter_address gasMeterAddress,
+        gm.more_gas_meter_address moreGasMeterAddress,
+        gm.use_gas_type_code useGasTypeCode,
+        gm.use_gas_type_name useGasTypeName,
+        gm.ventilate_status ventilateStatus,
+        gm.ventilate_user_id ventilateUserId,
+        gm.ventilate_user_name ventilateUserName,
+        gm.ventilate_time ventilateTime,
+        gm.security_user_id securityUserId,
+        gm.security_user_name securityUserName,
+        gm.longitude,
+        gm.latitude,
+        gm.stock_id stockId,
+        gm.new_source newSource,
+        gm.file_id fileId,
+        gm.gas_meter_real_id gasMeterRealId,
+        gm.measurement_accuracy measurementAccuracy,
+        gm.bank_withholding bankWithholding,
+        gm.gas_meter_base gasMeterBase,
+        gm.pre_built_time preBuiltTime,
+        gm.pre_built_user_id preBuiltUserId,
+        gm.pre_built_user_name preBuiltUserName,
+        gm.open_account_time openAccountTime,
+        gm.open_account_user_name openAccountUserName,
+        gm.whether_pre_open_account whetherPreOpenAccount,
+        gm.pre_open_account_state preOpenAccountState,
+        gm.check_user checkUser,
+        gm.check_time checkTime,
+        gm.remark,
+        gm.start_ID startID,
+
+
+        gm.data_status dataStatus,
+        gm.send_card_stauts sendCardStatus,
+        gm.whether_pre_open_account whetherPreOpenAccount
+        FROM
+        da_gas_meter gm
+         LEFT join da_customer_gas_meter_related gmr on gmr.gas_meter_code = gm.gas_code and gmr.data_status = 1
+        left JOIN pt_gas_meter_factory mf on mf.id = gm.gas_meter_factory_id
+        left JOIN pt_gas_meter_model mm on mm.id = gm.gas_meter_model_id
+        left JOIN pt_gas_meter_version mv on mv.id = gm.gas_meter_version_id
+        where gm.gas_code=#{gasMeterCode}
+    </select>
+
+    <select id="findGasMeterListBygasCode" resultType="com.cdqckj.gmis.devicearchive.vo.PageGasMeter" >
+        SELECT
+        gm.id id,
+        gm.gas_code gasCode,
+        gm.gas_meter_number gasMeterNumber,
+        gm.install_number installNumber,
+        gmr.customer_charge_no customerChargeNo,
+        gm.buy_time buyTime,
+        gm.safe_code safeCode,
+        gm.remote_service_flag remoteServiceFlag,
+
+        mf.id gasMeterFactoryId,
+        mf.gas_meter_factory_name gasMeterFactoryName,
+        mv.id gasMeterVersionId,
+        mv.gas_meter_version_name gasMeterVersionName,
+        mv.order_source_name  orderSourceName,
+        mv.amount_mark amountMark,
+        mv.radix radix,
+        mm.id gasMeterModelId,
+        mm.model_name gasMeterModelName,
+
+        gm.company_code companyCode,
+        gm.company_name companyName,
+        gm.org_id orgId,
+        gm.org_name orgName,
+        gm.install_time installTime,
+        gm.direction,
+        gm.province_code provinceCode,
+        gm.city_code cityCode,
+        gm.area_code areaCode,
+        gm.street_id streetId,
+        gm.community_id communityId,
+        gm.community_name communityName,
+        gm.contract_number contractNumber,
+        gm.use_gas_type_id useGasTypeId,
+        gm.population,
+        gm.node_number nodeNumber,
+
+        gm.gas_meter_address gasMeterAddress,
+        gm.more_gas_meter_address moreGasMeterAddress,
+        gm.use_gas_type_code useGasTypeCode,
+        gm.use_gas_type_name useGasTypeName,
+        gm.ventilate_status ventilateStatus,
+        gm.ventilate_user_id ventilateUserId,
+        gm.ventilate_user_name ventilateUserName,
+        gm.ventilate_time ventilateTime,
+        gm.security_user_id securityUserId,
+        gm.security_user_name securityUserName,
+        gm.longitude,
+        gm.latitude,
+        gm.stock_id stockId,
+        gm.new_source newSource,
+        gm.file_id fileId,
+        gm.gas_meter_real_id gasMeterRealId,
+        gm.measurement_accuracy measurementAccuracy,
+        gm.bank_withholding bankWithholding,
+        gm.gas_meter_base gasMeterBase,
+        gm.pre_built_time preBuiltTime,
+        gm.pre_built_user_id preBuiltUserId,
+        gm.pre_built_user_name preBuiltUserName,
+        gm.open_account_time openAccountTime,
+        gm.open_account_user_name openAccountUserName,
+        gm.whether_pre_open_account whetherPreOpenAccount,
+        gm.pre_open_account_state preOpenAccountState,
+        gm.check_user checkUser,
+        gm.check_time checkTime,
+        gm.remark,
+        gm.start_ID startID,
+
+
+        gm.data_status dataStatus,
+        gm.send_card_stauts sendCardStatus,
+        gm.whether_pre_open_account whetherPreOpenAccount
+        FROM
+        da_gas_meter gm
+         LEFT join da_customer_gas_meter_related gmr on gmr.gas_meter_code = gm.gas_code and gmr.data_status = 1
+        left JOIN pt_gas_meter_factory mf on mf.id = gm.gas_meter_factory_id
+        left JOIN pt_gas_meter_model mm on mm.id = gm.gas_meter_model_id
+        left JOIN pt_gas_meter_version mv on mv.id = gm.gas_meter_version_id
+        where gmr.customer_code=#{customerCode}
+    </select>
+
+
+    <update id="clearMeter" parameterType="java.lang.Long">
+        UPDATE da_gas_meter
+        SET province_code = '',
+         city_code = '',
+         area_code = '',
+         street_id = NULL,
+         community_id = NULL,
+         community_name = '',
+         gas_meter_address = '',
+         more_gas_meter_address = '',
+         contract_number = '',
+         use_gas_type_code = '',
+         use_gas_type_id = NULL,
+         use_gas_type_name = '',
+         population = NULL,
+         node_number = NULL,
+         ventilate_status = NULL,
+         ventilate_user_id = NULL,
+         ventilate_user_name = '',
+         ventilate_time = NULL,
+         security_user_id = NULL,
+         security_user_name = '',
+         longitude = NULL,
+         latitude = NULL,
+         open_account_time = NULL,
+         open_account_user_name = '',
+         open_account_user_id = NULL,
+         data_status = 5,
+         send_card_stauts = ''
+        WHERE
+            id = #{id}
+    </update>
+
+    <select id="findOnLineMeterByNumber" resultType="com.cdqckj.gmis.devicearchive.entity.GasMeter">
+        SELECT * FROM da_gas_meter WHERE gas_meter_number = #{number} AND data_status != 5 LIMIT 1
+    </select>
+
+    <select id="sendCardNum" resultType="java.lang.Long">
+        SELECT
+            COUNT(1)
+        FROM
+            da_gas_meter
+        WHERE
+            send_card_stauts = 'SENDED'
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.createUserId != null">
+                AND create_user = #{stsSearchParam.createUserId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+    </select>
+
+    <select id="stsGasMeterType" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+            COUNT( 1 ) amount, pgmv.order_source_name type
+        FROM
+            da_gas_meter dgm INNER JOIN pt_gas_meter_version pgmv ON pgmv.id = dgm.gas_meter_version_id
+        WHERE dgm.data_status != #{status}
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND dgm.company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND dgm.org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.createUserId != null">
+                AND dgm.create_user = #{stsSearchParam.createUserId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND dgm.create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND dgm.create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+            GROUP BY pgmv.order_source_name
+    </select>
+
+    <select id="stsFactory" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+            COUNT( 1 ) amount, CAST(dgm.gas_meter_factory_id AS CHAR) type
+        FROM
+            da_gas_meter dgm
+        WHERE dgm.data_status != #{status}
+        <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+            AND dgm.company_code = #{stsSearchParam.companyCode}
+        </if>
+        <if test="stsSearchParam.orgId != null">
+            AND dgm.org_id = #{stsSearchParam.orgId}
+        </if>
+        <if test="stsSearchParam.createUserId != null">
+            AND dgm.create_user = #{stsSearchParam.createUserId}
+        </if>
+        <if test="stsSearchParam.startDay != null">
+            AND dgm.create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+        </if>
+        <if test="stsSearchParam.endDay != null">
+            AND dgm.create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+        </if>
+        GROUP BY dgm.gas_meter_factory_id
+    </select>
+
+    <select id="stsStatus" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+        COUNT( 1 ) amount, dgm.data_status  type
+        FROM
+        da_gas_meter dgm
+        WHERE dgm.data_status != #{status}
+        <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+            AND dgm.company_code = #{stsSearchParam.companyCode}
+        </if>
+        <if test="stsSearchParam.orgId != null">
+            AND dgm.org_id = #{stsSearchParam.orgId}
+        </if>
+        <if test="stsSearchParam.createUserId != null">
+            AND dgm.create_user = #{stsSearchParam.createUserId}
+        </if>
+        <if test="stsSearchParam.startDay != null">
+            AND dgm.create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+        </if>
+        <if test="stsSearchParam.endDay != null">
+            AND dgm.create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+        </if>
+        GROUP BY dgm.data_status
+    </select>
+</mapper>

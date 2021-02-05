@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.gasmeter.dao.GasMeterFactoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.gasmeter.entity.GasMeterFactory">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="gas_meter_factory_name" jdbcType="VARCHAR" property="gasMeterFactoryName"/>
+        <result column="gas_meter_factory_code" jdbcType="VARCHAR" property="gasMeterFactoryCode"/>
+        <result column="gas_meter_factory_address" jdbcType="VARCHAR" property="gasMeterFactoryAddress"/>
+        <result column="telphone" jdbcType="VARCHAR" property="telphone"/>
+        <result column="contacts" jdbcType="VARCHAR" property="contacts"/>
+        <result column="fax_number" jdbcType="VARCHAR" property="faxNumber"/>
+        <result column="manager" jdbcType="VARCHAR" property="manager"/>
+        <result column="tax_registration_no" jdbcType="VARCHAR" property="taxRegistrationNo"/>
+        <result column="bank" jdbcType="VARCHAR" property="bank"/>
+        <result column="bank_account" jdbcType="VARCHAR" property="bankAccount"/>
+        <result column="gas_meter_type" jdbcType="VARCHAR" property="gasMeterType"/>
+        <result column="gas_meter_factory_status" jdbcType="SMALLINT" property="gasMeterFactoryStatus"/>
+        <result column="compatible_parameter" jdbcType="VARCHAR" property="compatibleParameter"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        gas_meter_factory_name, gas_meter_factory_code, gas_meter_factory_address, telphone, contacts, fax_number, manager, tax_registration_no, bank, bank_account, gas_meter_type, gas_meter_factory_status, compatible_parameter, delete_status
+    </sql>
+
+    <select id="pageQuery" resultMap="BaseResultMap">
+        SELECT
+        mf.*
+        FROM
+        pt_gas_meter_factory mf
+        ${ew.customSqlSegment}
+    </select>
+
+</mapper>

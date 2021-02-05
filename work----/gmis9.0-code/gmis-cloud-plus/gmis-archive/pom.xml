@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.cdqckj.gmis</groupId>
+        <artifactId>gmis-admin-cloud</artifactId>
+        <version>c.2.3-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gmis-archive</artifactId>
+    <name>${project.artifactId}</name>
+    <description>档案服务</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>gmis-userarchive-api</module>
+        <module>gmis-userarchive-entity</module>
+        <module>gmis-userarchive-biz</module>
+        <module>gmis-userarchive-controller</module>
+        <module>gmis-userarchive-server</module>
+        <module>gmis-devicearchive-biz</module>
+        <module>gmis-devicearchive-controller</module>
+        <module>gmis-devicearchive-entity</module>
+        <module>gmis-sim-biz</module>
+        <module>gmis-sim-controller</module>
+        <module>gmis-sim-entity</module>
+        <module>gmis-nodearchive-entity</module>
+        <module>gmis-nodearchive-biz</module>
+        <module>gmis-nodearchive-controllor</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-userarchive-entity</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-userarchive-biz</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-userarchive-controller</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <!--设备档案服务依赖-->
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-devicearchive-entity</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-devicearchive-biz</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-devicearchive-controller</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

@@ -1,0 +1,13 @@
+gmis:
+  swagger:
+    docket:
+      app-manage:
+        title: 应用服务服务
+        base-package: com.cdqckj.gmis.app-manage.app-manage.controller
+
+server:
+  port: 8790
+
+
+## 请在nacos中新建一个名为: gmis-app-manage-server.yml 的配置文件，并将： gmis-app-manage-server/src/main/resources/gmis-app-manage-server.yml 配置文件的内容移动过去
+## 然后删除此文件！！！

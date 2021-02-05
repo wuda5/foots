@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.iot.qc.dao.IotGasMeterCommandMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.iot.qc.entity.IotGasMeterCommand">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="gas_meter_factory_id" jdbcType="BIGINT" property="gasMeterFactoryId"/>
+        <result column="gas_meter_factory_name" jdbcType="VARCHAR" property="gasMeterFactoryName"/>
+        <result column="gas_meter_version_id" jdbcType="BIGINT" property="gasMeterVersionId"/>
+        <result column="gas_meter_version_name" jdbcType="VARCHAR" property="gasMeterVersionName"/>
+        <result column="gas_meter_type_id" jdbcType="BIGINT" property="gasMeterTypeId"/>
+        <result column="gas_meter_type_name" jdbcType="VARCHAR" property="gasMeterTypeName"/>
+        <result column="gas_meter_code" jdbcType="VARCHAR" property="gasMeterCode"/>
+        <result column="gas_meter_name" jdbcType="VARCHAR" property="gasMeterName"/>
+        <result column="meter_number" jdbcType="VARCHAR" property="meterNumber"/>
+        <result column="command_type" jdbcType="VARCHAR" property="commandType"/>
+        <result column="transaction_no" jdbcType="VARCHAR" property="transactionNo"/>
+        <result column="to_3_time" jdbcType="TIMESTAMP" property="to3Time"/>
+        <result column="use_gas_type_id" jdbcType="BIGINT" property="useGasTypeId"/>
+        <result column="use_gas_type_name" jdbcType="VARCHAR" property="useGasTypeName"/>
+        <result column="price_id" jdbcType="BIGINT" property="priceId"/>
+        <result column="recharge_money" jdbcType="DECIMAL" property="rechargeMoney"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        company_code, company_name, org_id, org_name, gas_meter_factory_id, gas_meter_factory_name, gas_meter_version_id, gas_meter_version_name, gas_meter_type_id, gas_meter_type_name, gas_meter_code, gas_meter_name, meter_number, command_type, transaction_no, to_3_time, use_gas_type_id, use_gas_type_name, price_id, recharge_money
+    </sql>
+    <select id="queryCommand" parameterType="com.cdqckj.gmis.iot.qc.vo.CommandVO" resultType="com.cdqckj.gmis.iot.qc.vo.CommandEchoVO">
+       SELECT
+            b.id AS commandId,
+            a.transaction_no AS transactionNo,
+            a.meter_number AS meterNo,
+            a.command_type AS commandType,
+            a.execute_result AS executeResult,
+            b.command_status AS commandStatus,
+            a.create_time AS createTime,
+            a.create_time AS sendTime,
+            b.execute_time AS executeTime,
+            b.command_stage AS commandStage,
+            b.error_desc AS errorDesc,
+            (select customer_charge_no from da_customer_gas_meter_related r where r.gas_meter_code = b.gas_meter_code
+                and r.data_status = 1 limit 1) AS customerChargeNo
+        FROM
+            qw_iot_gas_meter_command a
+        LEFT JOIN qw_iot_gas_meter_command_detail b ON a.id = b.command_id
+        <where>
+            <if test="params.commandStatus !=null">
+                AND b.command_status = #{params.commandStatus}
+            </if>
+            <if test="params.commandType !=null and params.commandType!= ''">
+                AND a.command_type = #{params.commandType}
+            </if>
+            <if test="params.executeResult !=null">
+                AND a.execute_result = #{params.executeResult}
+            </if>
+            <if test="params.meterNo !=null and params.meterNo!= ''">
+                AND a.meter_number = #{params.meterNo}
+            </if>
+            <if test="params.transactionNo !=null and params.transactionNo!= ''">
+                AND a.transaction_no = #{params.transactionNo}
+            </if>
+            <if test="params.executeTime !=null and params.executeTime.size == 2">
+                AND b.execute_time between #{params.executeTime[0]} and #{params.executeTime[1]}
+            </if>
+            <if test="params.gasMeterCodeList != null and params.gasMeterCodeList.size() > 0">
+                and b.gas_meter_code in
+                <foreach collection="params.gasMeterCodeList" open="(" close=")" item="gasMeterCode" separator=",">
+                    #{gasMeterCode}
+                </foreach>
+            </if>
+        </where>
+
+        ORDER BY
+            a.id DESC
+    </select>
+
+</mapper>

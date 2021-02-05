@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.readmeter.dao.ReadMeterBookMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.readmeter.entity.ReadMeterBook">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="community_id" jdbcType="BIGINT" property="communityId"/>
+        <result column="community_name" jdbcType="VARCHAR" property="communityName"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="book_code" jdbcType="VARCHAR" property="bookCode"/>
+        <result column="book_name" jdbcType="VARCHAR" property="bookName"/>
+        <result column="read_meter_user" jdbcType="BIGINT" property="readMeterUser"/>
+        <result column="read_meter_user_name" jdbcType="VARCHAR" property="readMeterUserName"/>
+        <result column="total_read_meter_count" jdbcType="INTEGER" property="totalReadMeterCount"/>
+        <result column="book_status" jdbcType="SMALLINT" property="bookStatus"/>
+        <result column="cited_count" jdbcType="SMALLINT" property="citedCount"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time, communityId, communityName, deleteStatus, cited_count,
+        company_code, company_name, org_id, org_name, book_code, book_name, read_meter_user, read_meter_user_name, total_read_meter_count, book_status, remark
+    </sql>
+
+</mapper>

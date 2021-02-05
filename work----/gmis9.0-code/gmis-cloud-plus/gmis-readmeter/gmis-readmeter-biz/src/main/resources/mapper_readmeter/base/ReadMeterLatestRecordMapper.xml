@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.readmeter.dao.ReadMeterLatestRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.readmeter.entity.ReadMeterLatestRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="customer_id" jdbcType="CHAR" property="customerId"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="gas_meter_code" jdbcType="CHAR" property="gasMeterCode"/>
+        <result column="meter_charge_no" jdbcType="VARCHAR" property="meterChargeNo"/>
+        <result column="gas_meter_number" jdbcType="CHAR" property="gasMeterNumber"/>
+        <result column="gas_meter_name" jdbcType="VARCHAR" property="gasMeterName"/>
+        <result column="year" jdbcType="SMALLINT" property="year"/>
+        <result column="month" jdbcType="SMALLINT" property="month"/>
+        <result column="read_time" jdbcType="DATE" property="readTime"/>
+        <result column="current_read_time" jdbcType="DATE" property="currentReadTime"/>
+        <result column="current_total_gas" jdbcType="DECIMAL" property="currentTotalGas"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,readTime,current_read_time,
+        customer_id, customer_code, customer_name, gas_meter_code, meter_charge_no, gas_meter_number, gas_meter_name, year, month ,current_total_gas
+    </sql>
+
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.pay.dao.WxRefundMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.pay.entity.WxRefund">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="pay_notes" jdbcType="VARCHAR" property="payNotes"/>
+        <result column="body" jdbcType="VARCHAR" property="body"/>
+        <result column="detail" jdbcType="VARCHAR" property="detail"/>
+        <result column="product_id" jdbcType="VARCHAR" property="productId"/>
+        <result column="order_number" jdbcType="VARCHAR" property="orderNumber"/>
+        <result column="transaction_id" jdbcType="VARCHAR" property="transactionId"/>
+        <result column="out_refund_no" jdbcType="VARCHAR" property="outRefundNo"/>
+        <result column="refund_id" jdbcType="VARCHAR" property="refundId"/>
+        <result column="pay" jdbcType="DECIMAL" property="pay"/>
+        <result column="refund_fee" jdbcType="DECIMAL" property="refundFee"/>
+        <result column="settlement_refund_fee" jdbcType="DECIMAL" property="settlementRefundFee"/>
+        <result column="refund_status" jdbcType="INTEGER" property="refundStatus"/>
+        <result column="success_time" jdbcType="TIMESTAMP" property="successTime"/>
+        <result column="notify" jdbcType="INTEGER" property="notify"/>
+        <result column="refund_recv_accout" jdbcType="VARCHAR" property="refundRecvAccout"/>
+        <result column="refund_desc" jdbcType="VARCHAR" property="refundDesc"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,refund_desc,
+        pay_notes, body, detail, product_id, order_number, transaction_id, out_refund_no, refund_id, pay, refund_fee, settlement_refund_fee, refund_status, success_time, notify, refund_recv_accout
+    </sql>
+
+</mapper>

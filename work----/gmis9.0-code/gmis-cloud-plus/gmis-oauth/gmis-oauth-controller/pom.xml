@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gmis-oauth</artifactId>
+        <groupId>com.cdqckj.gmis</groupId>
+        <version>c.2.3-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>gmis-oauth-controller</artifactId>
+    <name>${project.artifactId}</name>
+    <description>权限服务接口模块</description>
+    <dependencies>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-oauth-biz</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-authority-biz</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-tenant-biz</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-msgs-api</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <!-- jwt 只有Oauth服务需要使用 -->
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-jwt-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>

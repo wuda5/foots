@@ -1,0 +1,20 @@
+gmis:
+  database:
+    isSeata: false
+    multiTenantType: DATASOURCE
+  swagger:
+    docket:
+      securityed:
+        title: 安检模块服务
+        base-package: com.cdqckj.gmis.securityed.controller
+
+server:
+  port: 8873
+spring:
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages,i18n/common/messages
+
+## 请在nacos中新建一个名为: gmis-securityed-server.yml 的配置文件，并将： gmis-securityed-server/src/main/resources/gmis-securityed-server.yml 配置文件的内容移动过去
+## 然后删除此文件！！！

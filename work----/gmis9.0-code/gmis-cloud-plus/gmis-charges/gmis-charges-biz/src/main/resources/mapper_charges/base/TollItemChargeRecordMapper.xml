@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.charges.dao.TollItemChargeRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.charges.entity.TollItemChargeRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="compan_name" jdbcType="VARCHAR" property="companName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="gasmeter_code" jdbcType="VARCHAR" property="gasmeterCode"/>
+        <result column="gasmeter_name" jdbcType="VARCHAR" property="gasmeterName"/>
+        <result column="charge_no" jdbcType="VARCHAR" property="chargeNo"/>
+        <result column="sys_item_code" jdbcType="VARCHAR" property="sysItemCode"/>
+        <result column="toll_item_id" jdbcType="BIGINT" property="tollItemId"/>
+        <result column="item_name" jdbcType="VARCHAR" property="itemName"/>
+        <result column="charge_frequency" jdbcType="VARCHAR" property="chargeFrequency"/>
+        <result column="charge_period" jdbcType="SMALLINT" property="chargePeriod"/>
+        <result column="cycle_value" jdbcType="SMALLINT" property="cycleValue"/>
+        <result column="money" jdbcType="DECIMAL" property="money"/>
+        <result column="money_method" jdbcType="VARCHAR" property="moneyMethod"/>
+        <result column="financial_subject" jdbcType="VARCHAR" property="financialSubject"/>
+        <result column="vat_general_rate" jdbcType="DECIMAL" property="vatGeneralRate"/>
+        <result column="tax_category_code" jdbcType="VARCHAR" property="taxCategoryCode"/>
+        <result column="favoured_status" jdbcType="VARCHAR" property="favouredStatus"/>
+        <result column="favoured_policy" jdbcType="VARCHAR" property="favouredPolicy"/>
+        <result column="zero_tax_status" jdbcType="VARCHAR" property="zeroTaxStatus"/>
+        <result column="custom_code" jdbcType="VARCHAR" property="customCode"/>
+        <result column="tax_deduction_money" jdbcType="DECIMAL" property="taxDeductionMoney"/>
+        <result column="code_version" jdbcType="VARCHAR" property="codeVersion"/>
+        <result column="scene_code" jdbcType="VARCHAR" property="sceneCode"/>
+        <result column="scene_name" jdbcType="VARCHAR" property="sceneName"/>
+        <result column="start_time" jdbcType="DATE" property="startTime"/>
+        <result column="use_gas_types" jdbcType="VARCHAR" property="useGasTypes"/>
+        <result column="total_end_time" jdbcType="DATE" property="totalEndTime"/>
+        <result column="total_start_time" jdbcType="DATE" property="totalStartTime"/>
+        <result column="total_cycle_count" jdbcType="SMALLINT" property="totalCycleCount"/>
+        <result column="total_cycle_money" jdbcType="DECIMAL" property="totalCycleMoney"/>
+        <result column="total_charge_money" jdbcType="DECIMAL" property="totalChargeMoney"/>
+        <result column="charge_status" jdbcType="VARCHAR" property="chargeStatus"/>
+        <result column="charge_time" jdbcType="TIMESTAMP" property="chargeTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        company_code, compan_name, org_id, org_name, customer_code, customer_name, gasmeter_code, gasmeter_name, charge_no, sys_item_code, toll_item_id, item_name, charge_frequency, charge_period, cycle_value, money, money_method, financial_subject, vat_general_rate, tax_category_code, favoured_status, favoured_policy, zero_tax_status, custom_code, tax_deduction_money, code_version, scene_code, scene_name, start_time, use_gas_types, total_end_time, total_start_time, total_cycle_count, total_cycle_money, total_charge_money, charge_status, charge_time
+    </sql>
+
+</mapper>

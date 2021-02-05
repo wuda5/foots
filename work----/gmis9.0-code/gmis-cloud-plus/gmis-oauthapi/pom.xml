@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.cdqckj.gmis</groupId>
+        <artifactId>gmis-admin-cloud</artifactId>
+        <version>c.2.3-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gmis-oauthapi</artifactId>
+    <name>${project.artifactId}</name>
+    <description>api鉴权服务服务</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>gmis-oauthapi-api</module>
+        <module>gmis-oauthapi-entity</module>
+        <module>gmis-oauthapi-biz</module>
+        <module>gmis-oauthapi-controller</module>
+        <module>gmis-oauthapi-server</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-oauthapi-entity</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-oauthapi-biz</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cdqckj.gmis</groupId>
+                <artifactId>gmis-oauthapi-controller</artifactId>
+                <version>${gmis-project.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

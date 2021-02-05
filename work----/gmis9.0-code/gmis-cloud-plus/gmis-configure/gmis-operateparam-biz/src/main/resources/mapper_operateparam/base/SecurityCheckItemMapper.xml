@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.operateparam.dao.SecurityCheckItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.operateparam.entity.SecurityCheckItem">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="security_code" jdbcType="VARCHAR" property="securityCode"/>
+        <result column="security_name" jdbcType="VARCHAR" property="securityName"/>
+        <result column="danger_level" jdbcType="SMALLINT" property="dangerLevel"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,update_user,update_time,create_user,create_time,
+        name, security_code, security_name, danger_level, data_status, delete_status
+    </sql>
+
+</mapper>

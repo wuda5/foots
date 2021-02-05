@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gmis-authority</artifactId>
+        <groupId>com.cdqckj.gmis</groupId>
+        <version>c.2.3-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>gmis-tenant-datasource</artifactId>
+    <name>${project.artifactId}</name>
+    <description>租户服务多数据源模式</description>
+    <dependencies>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-tenant-entity</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-mq-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-databases</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-j2cache-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-dozer-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-boot</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+
+
+    </dependencies>
+
+</project>

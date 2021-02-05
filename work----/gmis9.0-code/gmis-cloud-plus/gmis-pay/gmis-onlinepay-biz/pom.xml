@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gmis-pay</artifactId>
+        <groupId>com.cdqckj.gmis</groupId>
+        <version>c.2.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gmis-onlinepay-biz</artifactId>
+    <name>${project.artifactId}</name>
+    <description>支付服务业务模块</description>
+
+    <dependencies>
+        <!-- 模块依赖 -->
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-onlinepay-entity</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+
+        <!-- 数据库相关的模块在Mapper层会使用 -->
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-databases</artifactId>
+        </dependency>
+        <!-- bean转换模块 在service + controller 都会使用，故只需要在biz模块引入，controller也能传递依赖进去 -->
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-dozer-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-boot</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+        </dependency>
+        <!-- 微信支付所需sdk -->
+        <dependency>
+            <groupId>com.github.wxpay</groupId>
+            <artifactId>wxpay-sdk</artifactId>
+            <version>0.0.3</version>
+        </dependency>
+        <!-- 生成二维码工具 -->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>javase</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!-- 支付宝 -->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>4.9.100.ALL</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-systemparam-biz</artifactId>
+            <version>c.2.3-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-charges-entity</artifactId>
+            <version>c.2.3-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.wechatpay-apiv3</groupId>
+            <artifactId>wechatpay-apache-httpclient</artifactId>
+            <version>0.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-charges-biz</artifactId>
+            <version>c.2.3-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>

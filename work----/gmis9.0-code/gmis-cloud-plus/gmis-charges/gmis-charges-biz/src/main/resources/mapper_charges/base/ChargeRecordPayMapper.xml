@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.charges.dao.ChargeRecordPayMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.charges.entity.ChargeRecordPay">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="VARCHAR" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="fee_record_type" jdbcType="VARCHAR" property="feeRecordType"/>
+        <result column="fee_record_no" jdbcType="VARCHAR" property="feeRecordNo"/>
+        <result column="payment_type" jdbcType="VARCHAR" property="paymentType"/>
+        <result column="service_provider" jdbcType="VARCHAR" property="serviceProvider"/>
+        <result column="payment_method" jdbcType="VARCHAR" property="paymentMethod"/>
+        <result column="fee_record_money" jdbcType="DECIMAL" property="feeRecordMoney"/>
+        <result column="fee_record_description" jdbcType="VARCHAR" property="feeRecordDescription"/>
+        <result column="expiry" jdbcType="SMALLINT" property="expiry"/>
+        <result column="qr_code" jdbcType="VARCHAR" property="qrCode"/>
+        <result column="service_order_number" jdbcType="VARCHAR" property="serviceOrderNumber"/>
+        <result column="create_user_name" jdbcType="VARCHAR" property="createUserName"/>
+        <result column="payment_status" jdbcType="VARCHAR" property="paymentStatus"/>
+        <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime"/>
+        <result column="payment_result" jdbcType="VARCHAR" property="paymentResult"/>
+        <result column="proof_status" jdbcType="SMALLINT" property="proofStatus"/>
+        <result column="proof_time" jdbcType="TIMESTAMP" property="proofTime"/>
+        <result column="proof_result" jdbcType="VARCHAR" property="proofResult"/>
+        <result column="manual_proof_usre_id" jdbcType="BIGINT" property="manualProofUsreId"/>
+        <result column="manual_proof_usre_name" jdbcType="VARCHAR" property="manualProofUsreName"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, fee_record_type, fee_record_no, payment_type, service_provider, payment_method, fee_record_money, fee_record_description, expiry, qr_code, service_order_number, create_user_name, payment_status, payment_time, payment_result, proof_status, proof_time, proof_result, manual_proof_usre_id, manual_proof_usre_name
+    </sql>
+
+</mapper>

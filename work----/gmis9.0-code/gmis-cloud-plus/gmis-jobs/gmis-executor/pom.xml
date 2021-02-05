@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gmis-jobs</artifactId>
+        <groupId>com.cdqckj.gmis</groupId>
+        <version>c.2.3-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>gmis-executor</artifactId>
+    <name>${project.artifactId}</name>
+
+    <description>定时服务执行器模块</description>
+    <dependencies>
+        <!-- xxl-job-core -->
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-jobs-core</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-databases</artifactId>
+            <version>${gmis-commons.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-tenant-biz</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-authority-biz</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-sms-biz</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-operateparam-biz</artifactId>
+            <version>${gmis-project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-bizjobcenter-api</artifactId>
+            <version>${gmis-project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-bizjobcenter-biz</artifactId>
+            <version>${gmis-project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-bizcenter-operation-config</artifactId>
+            <version>${gmis-project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-readmeter-biz</artifactId>
+            <version>${gmis-project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-file-biz</artifactId>
+            <version>${gmis-project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>

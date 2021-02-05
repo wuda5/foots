@@ -1,0 +1,16 @@
+gmis:
+  database:
+    isSeata: true
+    multiTenantType: DATASOURCE
+  swagger:
+    docket:
+      order:
+        title: 支付服务
+        base-package: com.cdqckj.gmis.pay.controller
+
+logging:
+  io.seata: debug
+  org.springframework.cloud.alibaba.seata.web: debug
+
+server:
+  port: 8770

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.invoice.dao.InvoiceMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.invoice.entity.Invoice">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="CHAR" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="gasmeter_code" jdbcType="VARCHAR" property="gasmeterCode"/>
+        <result column="gasmeter_name" jdbcType="VARCHAR" property="gasmeterName"/>
+        <result column="invoice_number" jdbcType="VARCHAR" property="invoiceNumber"/>
+        <result column="pay_no" jdbcType="VARCHAR" property="payNo"/>
+        <result column="invoice_type" jdbcType="VARCHAR" property="invoiceType"/>
+        <result column="invoice_kind" jdbcType="CHAR" property="invoiceKind"/>
+        <result column="billing_date" jdbcType="TIMESTAMP" property="billingDate"/>
+        <result column="invoice_code" jdbcType="VARCHAR" property="invoiceCode"/>
+        <result column="invoice_no" jdbcType="VARCHAR" property="invoiceNo"/>
+        <result column="invoice_code_no" jdbcType="VARCHAR" property="invoiceCodeNo"/>
+        <result column="buyer_name" jdbcType="VARCHAR" property="buyerName"/>
+        <result column="buyer_tin_no" jdbcType="VARCHAR" property="buyerTinNo"/>
+        <result column="buyer_address" jdbcType="VARCHAR" property="buyerAddress"/>
+        <result column="buyer_phone" jdbcType="VARCHAR" property="buyerPhone"/>
+        <result column="buyer_bank_name" jdbcType="VARCHAR" property="buyerBankName"/>
+        <result column="buyer_bank_account" jdbcType="VARCHAR" property="buyerBankAccount"/>
+        <result column="seller_name" jdbcType="VARCHAR" property="sellerName"/>
+        <result column="seller_tin_no" jdbcType="VARCHAR" property="sellerTinNo"/>
+        <result column="seller_address" jdbcType="VARCHAR" property="sellerAddress"/>
+        <result column="seller_phone" jdbcType="VARCHAR" property="sellerPhone"/>
+        <result column="seller_bank_name" jdbcType="VARCHAR" property="sellerBankName"/>
+        <result column="seller_bank_account" jdbcType="VARCHAR" property="sellerBankAccount"/>
+        <result column="total_amount" jdbcType="DECIMAL" property="totalAmount"/>
+        <result column="total_tax" jdbcType="DECIMAL" property="totalTax"/>
+        <result column="price_tax_total_upper" jdbcType="VARCHAR" property="priceTaxTotalUpper"/>
+        <result column="price_tax_total_lower" jdbcType="DECIMAL" property="priceTaxTotalLower"/>
+        <result column="payee_id" jdbcType="BIGINT" property="payeeId"/>
+        <result column="payee_name" jdbcType="VARCHAR" property="payeeName"/>
+        <result column="reviewer_id" jdbcType="BIGINT" property="reviewerId"/>
+        <result column="reviewer_name" jdbcType="VARCHAR" property="reviewerName"/>
+        <result column="drawer_id" jdbcType="BIGINT" property="drawerId"/>
+        <result column="drawer_name" jdbcType="VARCHAR" property="drawerName"/>
+        <result column="telphone" jdbcType="VARCHAR" property="telphone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="push_method" jdbcType="VARCHAR" property="pushMethod"/>
+        <result column="void_user_id" jdbcType="CHAR" property="voidUserId"/>
+        <result column="void_user_name" jdbcType="VARCHAR" property="voidUserName"/>
+        <result column="red_user_id" jdbcType="CHAR" property="redUserId"/>
+        <result column="red_user_name" jdbcType="VARCHAR" property="redUserName"/>
+        <result column="invoice_file_url" jdbcType="VARCHAR" property="invoiceFileUrl"/>
+        <result column="pdf_download_url" jdbcType="VARCHAR" property="pdfDownloadUrl"/>
+        <result column="invoice_serial_number" jdbcType="VARCHAR" property="invoiceSerialNumber"/>
+        <result column="red_request_number" jdbcType="VARCHAR" property="redRequestNumber"/>
+        <result column="blue_order_number" jdbcType="VARCHAR" property="blueOrderNumber"/>
+        <result column="blue_invoice_number" jdbcType="VARCHAR" property="blueInvoiceNumber"/>
+        <result column="blue_serial_number" jdbcType="VARCHAR" property="blueSerialNumber"/>
+        <result column="invoice_status" jdbcType="VARCHAR" property="invoiceStatus"/>
+        <result column="invoice_result" jdbcType="VARCHAR" property="invoiceResult"/>
+        <result column="invalid_status" jdbcType="SMALLINT" property="invalidStatus"/>
+        <result column="print_times" jdbcType="SMALLINT" property="printTimes"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="summary_bill_status" jdbcType="VARCHAR" property="summaryBillStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, customer_code, customer_name, gasmeter_code, gasmeter_name, invoice_number, pay_no, invoice_type, invoice_kind, billing_date, invoice_code, invoice_no, invoice_code_no, buyer_name, buyer_tin_no, buyer_address, buyer_phone, buyer_bank_name, buyer_bank_account, seller_name, seller_tin_no, seller_address, seller_phone, seller_bank_name, seller_bank_account, total_amount, total_tax, price_tax_total_upper, price_tax_total_lower, payee_id, payee_name, reviewer_id, reviewer_name, drawer_id, drawer_name, telphone, email, push_method, void_user_id, void_user_name, red_user_id, red_user_name, invoice_file_url, pdf_download_url, invoice_serial_number, red_request_number, blue_order_number, blue_invoice_number, blue_serial_number, invoice_status, invoice_result, invalid_status, print_times, data_status, remark, summary_bill_status
+    </sql>
+
+    <select id="findPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM gt_invoice s ${ew.customSqlSegment}
+    </select>
+
+
+    <update id="invalidInvoiceById">
+        update gt_invoice set invalid_status = 1 where id = #{invoiceId}
+    </update>
+
+    <update id="updateFailResultBySerialNo">
+        update gt_invoice set invoice_status = '3' , invoice_result = #{result} where invoice_serial_number = #{serialNo}
+    </update>
+    <select id="getEffectiveInvoice" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+            t.*
+        FROM
+            gt_invoice t
+        LEFT JOIN gt_invoice red ON t.invoice_number = red.blue_invoice_number
+            AND red.invoice_kind = '0'
+            AND red.data_status = '0'
+            AND (
+                red.invoice_status = '1'
+                OR red.invoice_status = '2'
+            )
+        WHERE
+            t.data_status = '0'
+        AND t.pay_no = #{payNo}
+        AND t.invalid_status = '0'
+        AND (
+                t.invoice_status = '1'
+                OR t.invoice_status = '2'
+            )
+        AND t.invoice_kind = '1'
+        AND red.id IS NULL
+    </select>
+
+    <sql id="Invoice_Column_List">
+        gi.id,gi.create_user,gi.create_time,gi.update_user,gi.update_time,
+        gi.company_code, gi.company_name, gi.org_id, gi.org_name, gi.business_hall_id, gi.business_hall_name,
+        gi.customer_code, gi.customer_name, gi.gasmeter_code, gi.gasmeter_name, gi.invoice_number, gi.pay_no,
+        gi.invoice_type, gi.invoice_kind, gi.billing_date, gi.invoice_code, gi.invoice_no, gi.invoice_code_no,
+        gi.buyer_name, gi.buyer_tin_no, gi.buyer_address, gi.buyer_phone, gi.buyer_bank_name, gi.buyer_bank_account,
+        gi.seller_name, gi.seller_tin_no, gi.seller_address, gi.seller_phone, gi.seller_bank_name, gi.seller_bank_account,
+        gi.total_amount, gi.total_tax, gi.price_tax_total_upper, gi.price_tax_total_lower, gi.payee_id, gi.payee_name,
+        gi.reviewer_id, gi.reviewer_name, gi.drawer_id, gi.drawer_name, gi.telphone, gi.email, gi.push_method, gi.void_user_id,
+        gi.void_user_name, gi.red_user_id, gi.red_user_name, gi.invoice_file_url, gi.pdf_download_url, gi.invoice_serial_number,
+        gi.red_request_number, gi.blue_order_number, gi.blue_invoice_number, gi.blue_serial_number, gi.invoice_status,
+        gi.invoice_result, gi.invalid_status, gi.print_times, gi.data_status, gi.remark, gi.summary_bill_status
+    </sql>
+
+    <select id="queryInvoiceList" parameterType="long" resultMap="BaseResultMap">
+        select
+            <include refid="Invoice_Column_List"></include>
+        from gt_invoice gi
+        left join gt_charge_record gcr on gcr.charge_no = gi.pay_no
+        left join gt_summary_bill_detail gsbd on gcr.id = gsbd.source_id
+        left join gt_summary_bill gsb on gsb.id = gsbd.summary_bill_id
+        <where>
+            gcr.summary_bill_status = 'BILLED'
+            and gsb.id=#{summaryId}
+        </where>
+    </select>
+    <select id="queryInvoicesByTimeFrame" resultMap="BaseResultMap">
+        select
+            <include refid="Invoice_Column_List"></include>
+        from gt_invoice gi
+        left join gt_charge_record gcr on gcr.charge_no = gi.pay_no
+        <where>
+            <if test="startTime != null">
+                <![CDATA[
+                    AND gcr.create_time >= #{startTime}
+                 ]]>
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                    AND gcr.create_time <= #{endTime}
+                 ]]>
+            </if>
+
+        </where>
+    </select>
+    <select id="queryInvoicesBySummaryId" parameterType="long" resultMap="BaseResultMap">
+        select
+            <include refid="Invoice_Column_List"></include>
+        from gt_invoice gi
+        left join gt_charge_record gcr on gcr.charge_no = gi.pay_no
+        left join gt_summary_bill_detail gsbd on gcr.id = gsbd.source_id
+        left join gt_summary_bill gsb on gsb.id = gsbd.summary_bill_id
+        <where>
+            gsb.id=#{summaryId}
+        </where>
+    </select>
+
+    <select id="pageInvoicesByTimeFrame" resultMap="BaseResultMap">
+        select
+            <include refid="Invoice_Column_List"></include>
+        from gt_invoice gi
+        left join gt_charge_record gcr on gcr.charge_no = gi.pay_no
+        <where>
+            gcr.summary_bill_status = 'UNBILL'
+            <if test="startTime != null">
+                <![CDATA[
+                    AND gcr.create_time >= #{startTime}
+                 ]]>
+            </if>
+            <if test="endTime != null">
+                <![CDATA[
+                    AND gcr.create_time <= #{endTime}
+                 ]]>
+            </if>
+
+        </where>
+    </select>
+
+    <select id="invoiceStsByType" resultType="com.cdqckj.gmis.common.domain.sts.InvoiceDayStsVo">
+        SELECT
+            COUNT( 1 ) amount,
+            sum( total_amount ) totalAmount,
+            sum( total_tax ) totalTax,
+            invoice_kind kt
+        FROM
+            gt_invoice
+        WHERE invoice_type = #{type} AND invoice_status = 2 AND org_id IN ${dataScope}
+            <if test="invalidStatus != null">
+                AND invalid_Status = #{invalidStatus}
+            </if>
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.businessHallId != null">
+                AND business_hall_id = #{stsSearchParam.businessHallId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+            GROUP BY invoice_kind
+    </select>
+
+
+</mapper>

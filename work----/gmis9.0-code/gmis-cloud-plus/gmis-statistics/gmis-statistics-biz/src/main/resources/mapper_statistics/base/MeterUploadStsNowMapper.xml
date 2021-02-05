@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.statistics.dao.MeterUploadStsNowMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.statistics.entity.MeterUploadStsNow">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="t_code" jdbcType="VARCHAR" property="tCode"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="business_hall_id" jdbcType="BIGINT" property="businessHallId"/>
+        <result column="create_user_id" jdbcType="BIGINT" property="createUserId"/>
+        <result column="device_id" jdbcType="VARCHAR" property="deviceId"/>
+        <result column="type" jdbcType="TINYINT" property="type"/>
+        <result column="alarm_type" jdbcType="VARCHAR" property="alarmType"/>
+        <result column="upload_times" jdbcType="INTEGER" property="uploadTimes"/>
+        <result column="sts_day" jdbcType="TIMESTAMP" property="stsDay"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        t_code, company_code, org_id, business_hall_id, create_user_id, device_id, type, alarm_type, upload_times, sts_day
+    </sql>
+
+    <select id="getNowRecord" resultType="com.cdqckj.gmis.statistics.entity.MeterUploadStsNow">
+        SELECT * FROM sts_meter_upload_sts_now ${sql}
+    </select>
+
+    <select id="stsMeterNumInfo" resultType="java.lang.Long">
+        SELECT
+            COUNT( 1 )
+        FROM
+            sts_meter_upload_sts_now
+        WHERE
+             type = #{type}
+        <if test="searchSql != null and searchSql != ''">
+            ${searchSql}
+        </if>
+    </select>
+
+</mapper>

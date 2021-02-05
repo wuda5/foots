@@ -1,0 +1,13 @@
+gmis:
+  swagger:
+    docket:
+      device:
+        title: 设备服务服务
+        base-package: com.cdqckj.gmis.device.controller
+
+server:
+  port: 8788
+
+
+## 请在nacos中新建一个名为: gmis-device-server.yml 的配置文件，并将： gmis-device-server/src/main/resources/gmis-device-server.yml 配置文件的内容移动过去
+## 然后删除此文件！！！

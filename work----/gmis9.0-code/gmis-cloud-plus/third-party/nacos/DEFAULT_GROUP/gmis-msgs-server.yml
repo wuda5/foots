@@ -1,0 +1,26 @@
+gmis:
+  swagger:
+    enabled: true
+    docket:
+      sms:
+        title: 短信模块
+        base-package: com.cdqckj.gmis.sms.controller
+      msgs:
+        title: 消息模块
+        base-package: com.cdqckj.gmis.msgs.controller
+      mail:
+        title: 邮件模块
+        base-package: com.cdqckj.gmis.mail.controller
+  cache:
+    type: REDIS   # CAFFEINE
+    def:
+      keyPrefix: ${spring.profiles.active}
+    configs:
+      gmis:
+        timeToLive: 1h
+        keyPrefix: aaa
+      test:
+        timeToLive: 2h
+
+server:
+  port: 8768

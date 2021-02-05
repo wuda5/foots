@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.invoice.dao.ReceiptMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.invoice.entity.Receipt">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="CHAR" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="receipt_no" jdbcType="VARCHAR" property="receiptNo"/>
+        <result column="receipt_type" jdbcType="SMALLINT" property="receiptType"/>
+        <result column="pay_no" jdbcType="VARCHAR" property="payNo"/>
+        <result column="pay_type" jdbcType="SMALLINT" property="payType"/>
+        <result column="pay_time" jdbcType="TIMESTAMP" property="payTime"/>
+        <result column="charge_amount_total_lowercase" jdbcType="DECIMAL" property="chargeAmountTotalLowercase"/>
+        <result column="charge_amount_total_uppercase" jdbcType="CHAR" property="chargeAmountTotalUppercase"/>
+        <result column="recharge_give_gas" jdbcType="VARCHAR" property="rechargeGiveGas"/>
+        <result column="discount_amount" jdbcType="DECIMAL" property="discountAmount"/>
+        <result column="should_pay" jdbcType="DECIMAL" property="shouldPay"/>
+        <result column="make_collections" jdbcType="DECIMAL" property="makeCollections"/>
+        <result column="actual_collection" jdbcType="DECIMAL" property="actualCollection"/>
+        <result column="give_change" jdbcType="DECIMAL" property="giveChange"/>
+        <result column="pre_deposit" jdbcType="DECIMAL" property="preDeposit"/>
+        <result column="customer_no" jdbcType="VARCHAR" property="customerNo"/>
+        <result column="customer_name" jdbcType="CHAR" property="customerName"/>
+        <result column="customer_address" jdbcType="VARCHAR" property="customerAddress"/>
+        <result column="customer_phone" jdbcType="VARCHAR" property="customerPhone"/>
+        <result column="operator_no" jdbcType="VARCHAR" property="operatorNo"/>
+        <result column="operator_name" jdbcType="VARCHAR" property="operatorName"/>
+        <result column="buyer_name" jdbcType="VARCHAR" property="buyerName"/>
+        <result column="buyer_tin_no" jdbcType="VARCHAR" property="buyerTinNo"/>
+        <result column="buyer_address" jdbcType="VARCHAR" property="buyerAddress"/>
+        <result column="buyer_phone" jdbcType="VARCHAR" property="buyerPhone"/>
+        <result column="buyer_bank_name" jdbcType="VARCHAR" property="buyerBankName"/>
+        <result column="buyer_bank_account" jdbcType="VARCHAR" property="buyerBankAccount"/>
+        <result column="deduct_amount" jdbcType="DECIMAL" property="deductAmount"/>
+        <result column="recharge_amount" jdbcType="DECIMAL" property="rechargeAmount"/>
+        <result column="recharge_gas_volume" jdbcType="VARCHAR" property="rechargeGasVolume"/>
+        <result column="predeposit_amount" jdbcType="DECIMAL" property="predepositAmount"/>
+        <result column="premium" jdbcType="DECIMAL" property="premium"/>
+        <result column="receipt_state" jdbcType="SMALLINT" property="receiptState"/>
+        <result column="billing_date" jdbcType="TIMESTAMP" property="billingDate"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, receipt_no, receipt_type, pay_no, pay_type, pay_time, charge_amount_total_lowercase, charge_amount_total_uppercase, recharge_give_gas, discount_amount, should_pay, make_collections, actual_collection, give_change, pre_deposit, customer_no, customer_name, customer_address, customer_phone, operator_no, operator_name, buyer_name, buyer_tin_no, buyer_address, buyer_phone, buyer_bank_name, buyer_bank_account, deduct_amount, recharge_amount, recharge_gas_volume, predeposit_amount, premium, receipt_state, billing_date, remark, data_status
+    </sql>
+
+    <select id="findPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM gt_receipt s ${ew.customSqlSegment}
+    </select>
+
+</mapper>

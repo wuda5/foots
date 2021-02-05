@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.operation.dao.OperationRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.operation.entity.OperationRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="gas_code" jdbcType="CHAR" property="gasCode"/>
+        <result column="gas_meter_name" jdbcType="VARCHAR" property="gasMeterName"/>
+        <result column="gas_meter_factory_id" jdbcType="BIGINT" property="gasMeterFactoryId"/>
+        <result column="use_gas_type_id" jdbcType="BIGINT" property="useGasTypeId"/>
+        <result column="accept_no" jdbcType="VARCHAR" property="acceptNo"/>
+        <result column="receive_user_id" jdbcType="BIGINT" property="receiveUserId"/>
+        <result column="receive_user_name" jdbcType="VARCHAR" property="receiveUserName"/>
+        <result column="receive_user_phone" jdbcType="VARCHAR" property="receiveUserPhone"/>
+        <result column="receive_user_time" jdbcType="TIMESTAMP" property="receiveUserTime"/>
+        <result column="book_operation_time" jdbcType="TIMESTAMP" property="bookOperationTime"/>
+        <result column="review_user_id" jdbcType="BIGINT" property="reviewUserId"/>
+        <result column="review_user_name" jdbcType="VARCHAR" property="reviewUserName"/>
+        <result column="review_time" jdbcType="TIMESTAMP" property="reviewTime"/>
+        <result column="review_objection" jdbcType="VARCHAR" property="reviewObjection"/>
+        <result column="distribution_user_id" jdbcType="BIGINT" property="distributionUserId"/>
+        <result column="distribution_user_name" jdbcType="VARCHAR" property="distributionUserName"/>
+        <result column="distribution_time" jdbcType="TIMESTAMP" property="distributionTime"/>
+        <result column="end_job_user_id" jdbcType="BIGINT" property="endJobUserId"/>
+        <result column="end_job_user_name" jdbcType="VARCHAR" property="endJobUserName"/>
+        <result column="end_job_time" jdbcType="TIMESTAMP" property="endJobTime"/>
+        <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason"/>
+        <result column="terminate_user_id" jdbcType="BIGINT" property="terminateUserId"/>
+        <result column="terminate_user_name" jdbcType="VARCHAR" property="terminateUserName"/>
+        <result column="terminate_time" jdbcType="TIMESTAMP" property="terminateTime"/>
+        <result column="stop_desc" jdbcType="VARCHAR" property="stopDesc"/>
+        <result column="order_type" jdbcType="SMALLINT" property="orderType"/>
+        <result column="urgency_level" jdbcType="SMALLINT" property="urgencyLevel"/>
+        <result column="order_content" jdbcType="VARCHAR" property="orderContent"/>
+        <result column="operation_status" jdbcType="SMALLINT" property="operationStatus"/>
+        <result column="operation_process_state" jdbcType="SMALLINT" property="operationProcessState"/>
+        <result column="transfer_id" jdbcType="BIGINT" property="transferId"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        company_code, company_name, org_id, org_name, customer_code, customer_name, gas_code, gas_meter_name, gas_meter_factory_id, use_gas_type_id, accept_no, receive_user_id, receive_user_name, receive_user_phone, receive_user_time, book_operation_time, review_user_id, review_user_name, review_time, review_objection, distribution_user_id, distribution_user_name, distribution_time, end_job_user_id, end_job_user_name, end_job_time, reject_reason, terminate_user_id, terminate_user_name, terminate_time, stop_desc, order_type, urgency_level, order_content, operation_status, operation_process_state, transfer_id, remark
+    </sql>
+
+</mapper>

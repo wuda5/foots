@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.iot.qc.dao.IotGasMeterDayDataMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.iot.qc.entity.IotGasMeterDayData">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="gas_meter_id" jdbcType="VARCHAR" property="gasMeterId"/>
+        <result column="day_init_gas" jdbcType="DECIMAL" property="dayInitGas"/>
+        <result column="day_end_gas" jdbcType="DECIMAL" property="dayEndGas"/>
+        <result column="day_use_gas" jdbcType="DECIMAL" property="dayUseGas"/>
+        <result column="day_use_money" jdbcType="DECIMAL" property="dayUseMoney"/>
+        <result column="current_ladder" jdbcType="SMALLINT" property="currentLadder"/>
+        <result column="current_price" jdbcType="DECIMAL" property="currentPrice"/>
+        <result column="gas_1" jdbcType="DECIMAL" property="gas1"/>
+        <result column="price_1" jdbcType="DECIMAL" property="price1"/>
+        <result column="gas_2" jdbcType="DECIMAL" property="gas2"/>
+        <result column="price_2" jdbcType="DECIMAL" property="price2"/>
+        <result column="gas_3" jdbcType="DECIMAL" property="gas3"/>
+        <result column="price_3" jdbcType="DECIMAL" property="price3"/>
+        <result column="gas_4" jdbcType="DECIMAL" property="gas4"/>
+        <result column="price_4" jdbcType="DECIMAL" property="price4"/>
+        <result column="gas_5" jdbcType="DECIMAL" property="gas5"/>
+        <result column="price_5" jdbcType="DECIMAL" property="price5"/>
+        <result column="gas_6" jdbcType="DECIMAL" property="gas6"/>
+        <result column="price_6" jdbcType="DECIMAL" property="price6"/>
+        <result column="on_line" jdbcType="SMALLINT" property="onLine"/>
+        <result column="alarm_type" jdbcType="VARCHAR" property="alarmType"/>
+        <result column="alarm_explain" jdbcType="VARCHAR" property="alarmExplain"/>
+        <result column="freezing_time" jdbcType="TIMESTAMP" property="freezingTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, gas_meter_id, day_init_gas, day_end_gas, day_use_gas, day_use_money, current_ladder, current_price, gas_1, price_1, gas_2, price_2, gas_3, price_3, gas_4, price_4, gas_5, price_5, gas_6, price_6, on_line, alarm_type, alarm_explain, freezing_time
+    </sql>
+    <select id="queryDayData" parameterType="com.cdqckj.gmis.iot.qc.vo.DayDataParamsVO" resultType="com.cdqckj.gmis.iot.qc.vo.DayDataVO">
+        SELECT
+        a.gas_meter_number AS gasMeterNumber,
+        a.version_name AS versionName,
+        a.gas_meter_balance AS gasMeterBalance,
+        a.total_use_gas AS totalUseGas,
+        a.day_use_1 AS dayUse1,
+        a.day_use_2 AS dayUse2,
+        a.day_use_3 AS dayUse3,
+        a.day_use_4 AS dayUse4,
+        a.day_use_5 AS dayUse5,
+        a.valve_state AS valveState,
+        a.meter_type AS meterType,
+        a.freezing_time AS freezingTime,
+        a.create_time AS uploadTime,
+        a.install_address AS installAddress,
+        a.customer_name AS customerName,
+        a.customer_phone AS customerPhone,
+        (select customer_charge_no from da_customer_gas_meter_related r where r.gas_meter_code = a.gas_meter_code
+        and r.data_status = 1 limit 1) AS customerChargeNo
+        FROM qw_iot_gas_meter_day_data a
+        <where>
+            <if test="params.meterType !=null">
+                AND a.meter_type = #{params.meterType}
+            </if>
+            <if test="params.customerChargeNo !=null and params.customerChargeNo!= ''">
+                AND customerChargeNo like CONCAT('%',#{params.customerChargeNo},'%')
+            </if>
+            <if test="params.gasMeterNumber !=null and params.gasMeterNumber!= ''">
+                AND a.gas_meter_number like CONCAT('%',#{params.gasMeterNumber},'%')
+            </if>
+            <if test="params.customerName !=null and params.customerName!= ''">
+                AND a.customer_name like CONCAT('%',#{params.customerName},'%')
+            </if>
+            <if test="params.uploadTime !=null and params.uploadTime.size == 2">
+                AND a.create_time between #{params.uploadTime[0]} and #{params.uploadTime[1]}
+            </if>
+        </where>
+        ORDER BY
+        a.id DESC
+    </select>
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gmis-admin-cloud</artifactId>
+        <groupId>com.cdqckj.gmis</groupId>
+        <version>c.2.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>gims-bizcenter-sts</artifactId>
+
+    <dependencies>
+        <!-- 核心的东西 -->
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-statistics-api</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-charges-entity</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-statistics-biz</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.cdqckj.gmis</groupId>
+            <artifactId>gmis-customercenter-biz</artifactId>
+            <version>${gmis-project.version}</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

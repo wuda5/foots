@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.pay.dao.WxBillMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.pay.entity.WxBill">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="transaction_time" jdbcType="VARCHAR" property="transactionTime"/>
+        <result column="public_account_id" jdbcType="VARCHAR" property="publicAccountId"/>
+        <result column="merchant_number" jdbcType="INTEGER" property="merchantNumber"/>
+        <result column="sub_merchant_number" jdbcType="INTEGER" property="subMerchantNumber"/>
+        <result column="device_info" jdbcType="INTEGER" property="deviceInfo"/>
+        <result column="transaction_id" jdbcType="VARCHAR" property="transactionId"/>
+        <result column="order_number" jdbcType="VARCHAR" property="orderNumber"/>
+        <result column="open_id" jdbcType="VARCHAR" property="openId"/>
+        <result column="trade_type" jdbcType="INTEGER" property="tradeType"/>
+        <result column="trade_state" jdbcType="INTEGER" property="tradeState"/>
+        <result column="paying_bank" jdbcType="VARCHAR" property="payingBank"/>
+        <result column="currency" jdbcType="VARCHAR" property="currency"/>
+        <result column="total_amount" jdbcType="DECIMAL" property="totalAmount"/>
+        <result column="voucher" jdbcType="DECIMAL" property="voucher"/>
+        <result column="refund_id" jdbcType="VARCHAR" property="refundId"/>
+        <result column="out_refund_no" jdbcType="VARCHAR" property="outRefundNo"/>
+        <result column="settlement_refund_fee" jdbcType="DECIMAL" property="settlementRefundFee"/>
+        <result column="coupon_refund" jdbcType="DECIMAL" property="couponRefund"/>
+        <result column="refund_type" jdbcType="INTEGER" property="refundType"/>
+        <result column="refund_state" jdbcType="INTEGER" property="refundState"/>
+        <result column="product_name" jdbcType="VARCHAR" property="productName"/>
+        <result column="merchant_data" jdbcType="VARCHAR" property="merchantData"/>
+        <result column="service_charge" jdbcType="DECIMAL" property="serviceCharge"/>
+        <result column="rate" jdbcType="DECIMAL" property="rate"/>
+        <result column="pay" jdbcType="DECIMAL" property="pay"/>
+        <result column="refund_fee" jdbcType="DECIMAL" property="refundFee"/>
+        <result column="rate_remark" jdbcType="VARCHAR" property="rateRemark"/>
+        <result column="transaction_date" jdbcType="DATE" property="transactionDate"/>
+        <result column="order_pay" jdbcType="DECIMAL" property="orderPay"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="contrast_state" jdbcType="INTEGER" property="contrastState"/>
+        <result column="contrast_remark" jdbcType="VARCHAR" property="contrastRemark"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        transaction_time, public_account_id, merchant_number, sub_merchant_number, device_info, transaction_id, order_number, open_id, trade_type, trade_state, paying_bank, currency, total_amount, voucher, refund_id, out_refund_no, settlement_refund_fee, coupon_refund, refund_type, refund_state, product_name, merchant_data, service_charge, rate, pay, refund_fee, rate_remark
+    </sql>
+
+</mapper>

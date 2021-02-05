@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <parent>
+      <artifactId>gmis-operationcenter</artifactId>
+      <groupId>com.cdqckj.gmis</groupId>
+      <version>c.2.3-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.cdqckj.gmis</groupId>
+  <artifactId>gmis-login</artifactId>
+  <version>${gmis-project.version}</version>
+  <name>${project.artifactId}</name>
+
+  <dependencies>
+
+    <!-- 操作日志需要在Controller方法上标注注解 -->
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-log-starter</artifactId>
+    </dependency>
+    <!-- 注入当前登录人信息 需要在Controller方法参数上写注解和实体类 -->
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-security-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-mq-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-validator-starter</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-oauth-api</artifactId>
+      <version>${gmis-project.version}</version>
+    </dependency>
+
+  </dependencies>
+
+</project>

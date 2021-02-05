@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.charges.dao.ChargeRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.charges.entity.ChargeRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="BIGINT" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_charge_no" jdbcType="VARCHAR" property="customerChargeNo"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="charge_no" jdbcType="VARCHAR" property="chargeNo"/>
+        <result column="charge_method_code" jdbcType="VARCHAR" property="chargeMethodCode"/>
+        <result column="charge_method_name" jdbcType="VARCHAR" property="chargeMethodName"/>
+        <result column="payable_money" jdbcType="DECIMAL" property="payableMoney"/>
+        <result column="charge_money" jdbcType="DECIMAL" property="chargeMoney"/>
+        <result column="precharge_money" jdbcType="DECIMAL" property="prechargeMoney"/>
+        <result column="recharge_money" jdbcType="DECIMAL" property="rechargeMoney"/>
+        <result column="recharge_gas" jdbcType="DECIMAL" property="rechargeGas"/>
+        <result column="recharge_give_gas" jdbcType="DECIMAL" property="rechargeGiveGas"/>
+        <result column="recharge_give_money" jdbcType="DECIMAL" property="rechargeGiveMoney"/>
+        <result column="reduction_money" jdbcType="DECIMAL" property="reductionMoney"/>
+        <result column="precharge_deduction_money" jdbcType="DECIMAL" property="prechargeDeductionMoney"/>
+        <result column="receivable_money" jdbcType="DECIMAL" property="receivableMoney"/>
+        <result column="actual_income_money" jdbcType="DECIMAL" property="actualIncomeMoney"/>
+        <result column="give_change" jdbcType="DECIMAL" property="giveChange"/>
+        <result column="insurance_contract_no" jdbcType="VARCHAR" property="insuranceContractNo"/>
+        <result column="insurance_premium" jdbcType="DECIMAL" property="insurancePremium"/>
+        <result column="insurance_start_date" jdbcType="DATE" property="insuranceStartDate"/>
+        <result column="insurance_end_date" jdbcType="DATE" property="insuranceEndDate"/>
+        <result column="give_deduction_money" jdbcType="DECIMAL" property="giveDeductionMoney"/>
+        <result column="give_book_pre_money" jdbcType="DECIMAL" property="giveBookPreMoney"/>
+        <result column="give_book_after_money" jdbcType="DECIMAL" property="giveBookAfterMoney"/>
+        <result column="charge_pre_money" jdbcType="DECIMAL" property="chargePreMoney"/>
+        <result column="charge_after_money" jdbcType="DECIMAL" property="chargeAfterMoney"/>
+        <result column="charge_status" jdbcType="VARCHAR" property="chargeStatus"/>
+        <result column="refund_status" jdbcType="VARCHAR" property="refundStatus"/>
+        <result column="summary_bill_status" jdbcType="VARCHAR" property="summaryBillStatus"/>
+        <result column="invoce_status" jdbcType="VARCHAR" property="invoceStatus"/>
+        <result column="invoice_type" jdbcType="VARCHAR" property="invoiceType"/>
+        <result column="invoice_no" jdbcType="VARCHAR" property="invoiceNo"/>
+        <result column="create_user_id" jdbcType="BIGINT" property="createUserId"/>
+        <result column="create_user_name" jdbcType="VARCHAR" property="createUserName"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+
+        <result column="pay_time" jdbcType="TIMESTAMP" property="payTime"/>
+        <result column="pay_real_time" jdbcType="TIMESTAMP" property="payRealTime"/>
+        <result column="pay_err_reason" jdbcType="VARCHAR" property="payErrReason"/>
+
+    </resultMap>
+
+    <!--    <resultMap id="ChargeRecordListResMap" extends="BaseResultMap" type="com.cdqckj.gmis.charges.entity.ChargeRecord">-->
+    <!--        <result column="customer_charge_no" jdbcType="VARCHAR" property="customerChargeNo"/>-->
+    <!--    </resultMap>-->
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, customer_code,customer_charge_no,
+        customer_name, charge_no, charge_method_code, charge_method_name, payable_money,
+        charge_money, precharge_money, recharge_money, recharge_gas, recharge_give_gas,
+        recharge_give_money, reduction_money, precharge_deduction_money, receivable_money,
+        actual_income_money, give_change, insurance_contract_no, insurance_premium, insurance_start_date,
+        insurance_end_date, give_deduction_money, give_book_pre_money, give_book_after_money,
+        charge_pre_money, charge_after_money, charge_status,refund_status,summary_bill_status, invoce_status,
+        invoice_type, invoice_no,
+        create_user_id, create_user_name, remark, data_status,pay_time,pay_real_time,pay_err_reason
+    </sql>
+
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="UserResultMap" type="com.cdqckj.gmis.authority.entity.auth.User">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="account" jdbcType="VARCHAR" property="account"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="org"/>
+        <result column="station_id" jdbcType="BIGINT" property="station"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="mobile" jdbcType="VARCHAR" property="mobile"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="status" jdbcType="BIT" property="status"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="nation" jdbcType="VARCHAR" property="nation"/>
+        <result column="education" jdbcType="VARCHAR" property="education"/>
+        <result column="position_status" jdbcType="VARCHAR" property="positionStatus"/>
+        <result column="work_describe" jdbcType="VARCHAR" property="workDescribe"/>
+        <result column="password_error_last_time" jdbcType="TIMESTAMP" property="passwordErrorLastTime"/>
+        <result column="password_error_num" jdbcType="INTEGER" property="passwordErrorNum"/>
+        <result column="password_expire_time" jdbcType="TIMESTAMP" property="passwordExpireTime"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime"/>
+    </resultMap>
+    <sql id="User_Column_List">
+        id, create_user, create_time, update_user, update_time,company_code,company_name,
+        account, name, org_id, station_id, email, mobile, sex, status, avatar, nation, education, position_status, work_describe, password_error_last_time, password_error_num, password_expire_time, password, last_login_time
+    </sql>
+
+    <select id="getUserById" parameterType="java.lang.Long" resultMap="UserResultMap">
+        SELECT
+        <include refid="User_Column_List"/>
+        FROM c_auth_user AS t
+        WHERE t.id = #{id}
+    </select>
+
+    <update id="rebackRefundStatus" parameterType="java.lang.Long" >
+        update gt_charge_record set refund_status=null where id =#{id}
+    </update>
+
+    <select id="counterStaff" resultType="com.cdqckj.gmis.charges.vo.StsCounterStaffVo">
+        SELECT
+            gcr.create_user id,
+            gcr.create_user_name NAME,
+            COUNT( 1 ) serviceCount,
+            SUM(gcr.actual_income_money ) changeMoney,
+            (SELECT COUNT( 1 ) FROM gt_invoice gi WHERE gcr.create_user = gi.create_user) as invoiceCount
+        FROM
+            gt_charge_record gcr
+        WHERE
+            gcr.charge_status = 'CHARGED' AND gcr.data_status = 1 AND gcr.org_id IN ${dataScope}
+        <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+            and company_code = #{stsSearchParam.companyCode}
+        </if>
+        <if test="stsSearchParam.orgId != null">
+            and org_id = #{stsSearchParam.orgId}
+        </if>
+        <if test="stsSearchParam.businessHallId != null">
+            and business_hall_id = #{stsSearchParam.businessHallId}
+        </if>
+        <if test="stsSearchParam.startDay != null">
+            and create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+        </if>
+        <if test="stsSearchParam.endDay != null">
+            and create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+        </if>
+        GROUP BY create_user
+    </select>
+
+    <select id="stsGasLadderFee" resultType="com.cdqckj.gmis.charges.vo.StsGasLadderFeeVo">
+        SELECT
+            ggsd.ladder_charge_mode_id gasLadderId,
+            ggsd.ladder_charge_mode_name gasLadderName,
+            ggsd.use_gas_type_id gasTypeId,
+            ggsd.use_gas_type_name gasTypeName,
+            SUM(ggad.gas) gasAmount,
+            SUM(ggad.gas_money) gasMoney
+        FROM
+            gt_charge_record gcr
+            INNER JOIN gt_charge_item_record gcir ON gcr.charge_no = gcir.charge_no
+            INNER JOIN gt_gasmeter_arrears_detail ggad ON gcir.charge_item_source_id = ggad.id
+            INNER JOIN gt_gasmeter_settlement_detail ggsd ON ggad.readmeter_data_id = ggsd.readmeter_data_id
+        WHERE
+            gcr.charge_status = 'CHARGED' AND gcr.data_status = 1
+            AND gcir.charge_item_source_code = 'GASFEE' AND gcr.org_id IN ${dataScope}
+            <if test="idList.size() > 0">
+                AND ggsd.ladder_charge_mode_id in
+                <foreach item="item" collection="idList" separator="," open="(" close=")" index="">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND gcr.company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND gcr.org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.businessHallId != null">
+                AND gcr.business_hall_id = #{stsSearchParam.businessHallId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND gcr.create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND gcr.create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+            GROUP BY ggsd.ladder_charge_mode_id
+    </select>
+
+    <select id="stsGasLadderDetailFee" resultType="com.cdqckj.gmis.charges.vo.StsGasLadderDetailFeeVo">
+        SELECT
+            ggsd.ladder_charge_mode_id gasLadderId,
+            ggsd.ladder_charge_mode_name gasLadderName,
+            ggsd.use_gas_type_id gasTypeId,
+            ggsd.use_gas_type_name gasTypeName,
+            COUNT(1) people1,
+            SUM(ggsd.gas_1) gas1,
+            SUM(ggsd.money_1) money1,
+
+            COUNT(1) people2,
+            SUM(ggsd.gas_2) gas2,
+            SUM(ggsd.money_2) money2,
+
+            COUNT(1) people3,
+            SUM(ggsd.gas_3) gas3,
+            SUM(ggsd.money_3) money3,
+
+            COUNT(1) people4,
+            SUM(ggsd.gas_4) gas4,
+            SUM(ggsd.money_4) money4,
+
+            COUNT(1) people5,
+            SUM(ggsd.gas_5) gas5,
+            SUM(ggsd.money_5) money5,
+
+            COUNT(1) people6,
+            SUM(ggsd.gas_6) gas6,
+            SUM(ggsd.money_6) money6
+        FROM
+            gt_charge_record gcr
+            INNER JOIN gt_charge_item_record gcir ON gcr.charge_no = gcir.charge_no
+            INNER JOIN gt_gasmeter_arrears_detail ggad ON gcir.charge_item_source_id = ggad.id
+            INNER JOIN gt_gasmeter_settlement_detail ggsd ON ggad.readmeter_data_id = ggsd.readmeter_data_id
+        WHERE
+            gcr.charge_status = 'CHARGED' AND gcr.data_status = 1
+            AND gcir.charge_item_source_code = 'GASFEE' AND gcr.org_id IN ${dataScope}
+            <if test="idList.size() > 0">
+                AND ggsd.ladder_charge_mode_id in
+                <foreach item="item" collection="idList" separator="," open="(" close=")" index="">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND gcr.company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND gcr.org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.businessHallId != null">
+                AND gcr.business_hall_id = #{stsSearchParam.businessHallId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND gcr.create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND gcr.create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+            GROUP BY ggsd.ladder_charge_mode_id
+    </select>
+
+    <select id="stsChangeFeeByChargeMethod" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+            SUM(receivable_money) amount,
+            charge_method_code type,
+            charge_method_name typeName
+        FROM
+            gt_charge_record
+        WHERE
+            charge_status = 'CHARGED' AND data_status = 1 AND org_id IN ${dataScope}
+        <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+            AND company_code = #{stsSearchParam.companyCode}
+        </if>
+        <if test="stsSearchParam.orgId != null">
+            AND org_id = #{stsSearchParam.orgId}
+        </if>
+        <if test="stsSearchParam.businessHallId != null">
+            AND business_hall_id = #{stsSearchParam.businessHallId}
+        </if>
+        <if test="stsSearchParam.startDay != null">
+            AND create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+        </if>
+        <if test="stsSearchParam.endDay != null">
+            AND create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+        </if>
+        GROUP BY charge_method_code
+    </select>
+
+    <select id="stsChargeFeeItemType" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+            SUM(gcir.charge_item_money) amount,
+            gcir.charge_item_source_code type,
+            gcir.charge_item_source_name typeName
+        FROM
+            gt_charge_record gcr INNER JOIN gt_charge_item_record gcir ON gcr.charge_no = gcir.charge_no
+        WHERE
+            gcr.charge_status = 'CHARGED' AND gcr.data_status = 1 AND gcr.org_id In ${dataScope}
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND gcr.company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND gcr.org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.businessHallId != null">
+                AND gcr.business_hall_id = #{stsSearchParam.businessHallId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND gcr.create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND gcr.create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+            GROUP BY gcir.charge_item_source_code
+    </select>
+
+    <select id="stsRefundByChargeMethod" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+           SUM(gcf.back_amount) amount,
+            gcf.charge_method_code type,
+            gcf.charge_method_name typeName
+        FROM
+             gt_charge_refund gcf
+        WHERE
+              gcf.refund_status = 'REFUNDED' AND gcf.org_id IN ${dataScope}
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND gcf.company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND gcf.org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.businessHallId != null">
+                AND gcf.business_hall_id = #{stsSearchParam.businessHallId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND gcf.back_finish_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND gcf.back_finish_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+            GROUP BY gcf.charge_method_code
+    </select>
+
+    <select id="stsBeforeGasMeter" resultType="java.math.BigDecimal">
+        SELECT
+               COALESCE(SUM(gcr.recharge_gas ), 0)
+        FROM
+            gt_charge_record gcr
+            INNER JOIN da_gas_meter dgm ON gcr.gas_meter_code = dgm.gas_code
+            INNER JOIN pt_gas_meter_version pgmv ON dgm.gas_meter_version_id = pgmv.id
+        WHERE
+            gcr.charge_status = 'CHARGED' AND gcr.data_status = 1
+            AND pgmv.order_source_name = #{gasMeterType} AND gcr.org_id IN ${dataScope}
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND gcr.company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND gcr.org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.businessHallId != null">
+                AND gcr.business_hall_id = #{stsSearchParam.businessHallId}
+            </if>
+            <if test="stsSearchParam.createUserId != null">
+                AND gcr.create_user = #{stsSearchParam.createUserId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND gcr.create_time &gt;= #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND gcr.create_time &lt; #{stsSearchParam.endDay}
+            </if>
+    </select>
+
+</mapper>

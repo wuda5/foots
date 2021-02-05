@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.systemparam.dao.FunctionSwitchMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.systemparam.entity.FunctionSwitch">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="open_id_card" jdbcType="SMALLINT" property="openIdCard"/>
+        <result column="open_customer_prefix" jdbcType="SMALLINT" property="openCustomerPrefix"/>
+        <result column="customer_prefix" jdbcType="VARCHAR" property="customerPrefix"/>
+        <result column="settlement_date" jdbcType="TIMESTAMP" property="settlementDate"/>
+        <result column="open_vat_invoice" jdbcType="SMALLINT" property="openVatInvoice"/>
+        <result column="tax_rate" jdbcType="DECIMAL" property="taxRate"/>
+        <result column="open_black_list" jdbcType="SMALLINT" property="openBlackList"/>
+        <result column="black_max_volume" jdbcType="DECIMAL" property="blackMaxVolume"/>
+        <result column="black_max__money" jdbcType="DECIMAL" property="blackMaxMoney"/>
+        <result column="open_check_limit" jdbcType="SMALLINT" property="openCheckLimit"/>
+        <result column="check_max_volume" jdbcType="DECIMAL" property="checkMaxVolume"/>
+        <result column="check_max_money" jdbcType="DECIMAL" property="checkMaxMoney"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="transfer_account_flag" jdbcType="SMALLINT" property="transferAccountFlag"/>
+        <result column="invoice_code_rule" jdbcType="SMALLINT" property="invoiceCodeRule"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, open_id_card, open_customer_prefix, customer_prefix, settlement_date, open_vat_invoice, tax_rate, open_black_list, black_max_volume, black_max__money, open_check_limit, check_max_volume, check_max_money, remark,
+        transfer_account_flag,invoice_code_rule
+    </sql>
+
+    <select id="getAllFunctionSwitch" resultType="com.cdqckj.gmis.systemparam.entity.FunctionSwitch">
+        SELECT * FROM pz_function_switch ORDER BY create_time DESC LIMIT 1
+    </select>
+
+</mapper>

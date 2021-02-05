@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.operation.dao.OrderRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.operation.entity.OrderRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="meter_code" jdbcType="VARCHAR" property="meterCode"/>
+        <result column="business_type" jdbcType="SMALLINT" property="businessType"/>
+        <result column="business_order_number" jdbcType="VARCHAR" property="businessOrderNumber"/>
+        <result column="work_order_type" jdbcType="VARCHAR" property="workOrderType"/>
+        <result column="work_order_no" jdbcType="VARCHAR" property="workOrderNo"/>
+        <result column="urgency" jdbcType="VARCHAR" property="urgency"/>
+        <result column="work_order_desc" jdbcType="VARCHAR" property="workOrderDesc"/>
+        <result column="receive_user_id" jdbcType="BIGINT" property="receiveUserId"/>
+        <result column="receive_user_name" jdbcType="VARCHAR" property="receiveUserName"/>
+        <result column="receive_time" jdbcType="TIMESTAMP" property="receiveTime"/>
+        <result column="receive_user_mobile" jdbcType="VARCHAR" property="receiveUserMobile"/>
+        <result column="review_user_id" jdbcType="BIGINT" property="reviewUserId"/>
+        <result column="review_user_name" jdbcType="VARCHAR" property="reviewUserName"/>
+        <result column="review_time" jdbcType="TIMESTAMP" property="reviewTime"/>
+        <result column="review_desc" jdbcType="VARCHAR" property="reviewDesc"/>
+        <result column="book_operation_time" jdbcType="TIMESTAMP" property="bookOperationTime"/>
+        <result column="end_job_user_id" jdbcType="BIGINT" property="endJobUserId"/>
+        <result column="end_job_user_name" jdbcType="VARCHAR" property="endJobUserName"/>
+        <result column="end_job_time" jdbcType="TIMESTAMP" property="endJobTime"/>
+        <result column="reject_desc" jdbcType="VARCHAR" property="rejectDesc"/>
+        <result column="stop_desc" jdbcType="VARCHAR" property="stopDesc"/>
+        <result column="invalid_desc" jdbcType="VARCHAR" property="invalidDesc"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="order_status" jdbcType="SMALLINT" property="orderStatus"/>
+        <result column="turn_id" jdbcType="BIGINT" property="turnId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,customer_name,customer_code,meter_code,
+        company_code, company_name, org_id, org_name, business_type, business_order_number, work_order_type, work_order_no, urgency, work_order_desc, receive_user_id, receive_user_name, receive_time, receive_user_mobile, review_user_id, review_user_name, review_time, review_desc, book_operation_time, end_job_user_id, end_job_user_name, end_job_time, reject_desc, stop_desc, invalid_desc, remark, order_status, turn_id
+    </sql>
+
+</mapper>

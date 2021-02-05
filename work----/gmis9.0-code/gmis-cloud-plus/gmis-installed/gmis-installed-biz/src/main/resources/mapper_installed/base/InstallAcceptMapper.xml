@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.installed.dao.InstallAcceptMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.installed.entity.InstallAccept">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="install_number" jdbcType="VARCHAR" property="installNumber"/>
+        <result column="accept_suggest" jdbcType="TINYINT" property="acceptSuggest"/>
+        <result column="result_text" jdbcType="LONGVARCHAR" property="resultText"/>
+        <result column="accept_time" jdbcType="TIMESTAMP" property="acceptTime"/>
+        <result column="accept_url" jdbcType="VARCHAR" property="acceptUrl"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="createUser" jdbcType="BIGINT" property="createUser"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="updateUser" jdbcType="BIGINT" property="updateUser"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        install_number, accept_suggest, result_text, accept_time, accept_url, createTime, createUser, updateTime, updateUser
+    </sql>
+
+</mapper>

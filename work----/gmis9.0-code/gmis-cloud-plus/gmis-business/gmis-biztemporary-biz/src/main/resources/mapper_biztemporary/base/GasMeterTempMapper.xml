@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.biztemporary.dao.GasMeterTempMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.biztemporary.entity.GasMeterTemp">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="gas_code" jdbcType="CHAR" property="gasCode"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="gas_meter_factory_id" jdbcType="BIGINT" property="gasMeterFactoryId"/>
+        <result column="gas_meter_model_id" jdbcType="BIGINT" property="gasMeterModelId"/>
+        <result column="gas_meter_version_id" jdbcType="BIGINT" property="gasMeterVersionId"/>
+        <result column="install_number" jdbcType="VARCHAR" property="installNumber"/>
+        <result column="install_time" jdbcType="TIMESTAMP" property="installTime"/>
+        <result column="direction" jdbcType="VARCHAR" property="direction"/>
+        <result column="province_code" jdbcType="VARCHAR" property="provinceCode"/>
+        <result column="city_code" jdbcType="VARCHAR" property="cityCode"/>
+        <result column="area_code" jdbcType="VARCHAR" property="areaCode"/>
+        <result column="street_id" jdbcType="BIGINT" property="streetId"/>
+        <result column="community_id" jdbcType="BIGINT" property="communityId"/>
+        <result column="community_name" jdbcType="VARCHAR" property="communityName"/>
+        <result column="gas_meter_address" jdbcType="VARCHAR" property="gasMeterAddress"/>
+        <result column="more_gas_meter_address" jdbcType="VARCHAR" property="moreGasMeterAddress"/>
+        <result column="contract_number" jdbcType="VARCHAR" property="contractNumber"/>
+        <result column="use_gas_type_code" jdbcType="VARCHAR" property="useGasTypeCode"/>
+        <result column="use_gas_type_id" jdbcType="BIGINT" property="useGasTypeId"/>
+        <result column="use_gas_type_name" jdbcType="VARCHAR" property="useGasTypeName"/>
+        <result column="population" jdbcType="INTEGER" property="population"/>
+        <result column="node_number" jdbcType="VARCHAR" property="nodeNumber"/>
+        <result column="longitude" jdbcType="DECIMAL" property="longitude"/>
+        <result column="latitude" jdbcType="DECIMAL" property="latitude"/>
+        <result column="stock_id" jdbcType="BIGINT" property="stockId"/>
+        <result column="gas_meter_number" jdbcType="VARCHAR" property="gasMeterNumber"/>
+        <result column="gas_meter_base" jdbcType="DECIMAL" property="gasMeterBase"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        gas_code, company_code, company_name, org_id, org_name, gas_meter_factory_id, gas_meter_model_id, gas_meter_version_id, install_number, install_time, direction, province_code, city_code, area_code, street_id, community_id, community_name, gas_meter_address, more_gas_meter_address, contract_number, use_gas_type_code, use_gas_type_id, use_gas_type_name, population, node_number, longitude, latitude, stock_id, gas_meter_number, gas_meter_base
+    </sql>
+
+</mapper>

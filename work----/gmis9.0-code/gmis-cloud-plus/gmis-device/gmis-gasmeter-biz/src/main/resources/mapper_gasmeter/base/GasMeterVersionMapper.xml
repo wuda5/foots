@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.gasmeter.dao.GasMeterVersionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.gasmeter.entity.GasMeterVersion">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="gas_meter_version_name" jdbcType="VARCHAR" property="gasMeterVersionName"/>
+        <result column="gas_meter_describe" jdbcType="VARCHAR" property="gasMeterDescribe"/>
+        <result column="company_id" jdbcType="BIGINT" property="companyId"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="equipment_vendors_name" jdbcType="VARCHAR" property="equipmentVendorsName"/>
+        <result column="wireless_version" jdbcType="VARCHAR" property="wirelessVersion"/>
+        <result column="order_source_name" jdbcType="VARCHAR" property="orderSourceName"/>
+        <result column="amount_mark" jdbcType="VARCHAR" property="amountMark"/>
+        <result column="remote_service_flag" jdbcType="VARCHAR" property="remoteServiceFlag"/>
+        <result column="amount_digits" jdbcType="SMALLINT" property="amountDigits"/>
+        <result column="single_level_amount" jdbcType="SMALLINT" property="singleLevelAmount"/>
+        <result column="ic_card_core_mark" jdbcType="VARCHAR" property="icCardCoreMark"/>
+        <result column="measurement_accuracy" jdbcType="SMALLINT" property="measurementAccuracy"/>
+        <result column="select_address" jdbcType="SMALLINT" property="selectAddress"/>
+        <result column="version_state" jdbcType="SMALLINT" property="versionState"/>
+        <result column="accumulated_amount" jdbcType="SMALLINT" property="accumulatedAmount"/>
+        <result column="accumulated_count" jdbcType="SMALLINT" property="accumulatedCount"/>
+        <result column="card_type" jdbcType="VARCHAR" property="cardType"/>
+        <result column="card_number_prefix" jdbcType="VARCHAR" property="cardNumberPrefix"/>
+        <result column="card_number_length" jdbcType="SMALLINT" property="cardNumberLength"/>
+        <result column="open_in_meter_number" jdbcType="SMALLINT" property="openInMeterNumber"/>
+        <result column="issuing_cards" jdbcType="SMALLINT" property="issuingCards"/>
+        <result column="verification_table_no" jdbcType="SMALLINT" property="verificationTableNo"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+        <result column="radix" jdbcType="SMALLINT" property="radix"/>
+        <result column="openValve" jdbcType="SMALLINT" property="openValve"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        gas_meter_version_name, gas_meter_describe, company_id, company_code, company_name, equipment_vendors_name, wireless_version, order_source_name, amount_mark, remote_service_flag, amount_digits, single_level_amount, ic_card_core_mark, measurement_accuracy, select_address, version_state, accumulated_amount, accumulated_count, card_type, card_number_prefix, card_number_length, open_in_meter_number, issuing_cards, verification_table_no, remark, delete_status,
+        radix,openValve
+    </sql>
+
+</mapper>

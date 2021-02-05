@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.operateparam.dao.CompanyUserQuotaRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.operateparam.entity.CompanyUserQuotaRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="CHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="BIGINT" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="quota_type" jdbcType="VARCHAR" property="quotaType"/>
+        <result column="quota_time" jdbcType="TIMESTAMP" property="quotaTime"/>
+        <result column="money" jdbcType="DECIMAL" property="money"/>
+        <result column="single_limit" jdbcType="DECIMAL" property="singleLimit"/>
+        <result column="total_money" jdbcType="DECIMAL" property="totalMoney"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, user_id, quota_type, quota_time, money, single_limit, total_money, data_status, remark
+    </sql>
+    <select id="selectBusinessHallUser" resultType="com.cdqckj.gmis.operateparam.vo.BusinessHallVO">
+       select a.business_hall_name as businessHallName,a.id as businessHallId,b.name,b.id as userId from pz_business_hall a
+       inner join  c_auth_user b on a.org_id = b.org_id left join c_core_org org on b.org_id = org.id and org.`status` = 1
+    </select>
+    <select id="queryRecentRecord" resultType="com.cdqckj.gmis.operateparam.entity.CompanyUserQuotaRecord">
+        SELECT * FROM pz_company_user_quota_record where 1=1 ORDER BY id desc  LIMIT 1
+    </select>
+</mapper>

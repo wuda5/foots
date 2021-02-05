@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.iot.qc.dao.IotGasMeterUploadDataMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.iot.qc.entity.IotGasMeterUploadData">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="meter_number" jdbcType="VARCHAR" property="meterNumber"/>
+        <result column="gas_meter_factory_id" jdbcType="BIGINT" property="gasMeterFactoryId"/>
+        <result column="gas_meter_factory_name" jdbcType="VARCHAR" property="gasMeterFactoryName"/>
+        <result column="gas_meter_version_id" jdbcType="BIGINT" property="gasMeterVersionId"/>
+        <result column="gas_meter_version_name" jdbcType="VARCHAR" property="gasMeterVersionName"/>
+        <result column="archive_id" jdbcType="VARCHAR" property="archiveId"/>
+        <result column="gas_meter_id" jdbcType="BIGINT" property="gasMeterId"/>
+        <result column="gas_meter_name" jdbcType="VARCHAR" property="gasMeterName"/>
+        <result column="city_id" jdbcType="BIGINT" property="cityId"/>
+        <result column="city_name" jdbcType="VARCHAR" property="cityName"/>
+        <result column="area_id" jdbcType="BIGINT" property="areaId"/>
+        <result column="area_name" jdbcType="VARCHAR" property="areaName"/>
+        <result column="street_id" jdbcType="BIGINT" property="streetId"/>
+        <result column="street_name" jdbcType="VARCHAR" property="streetName"/>
+        <result column="community_id" jdbcType="BIGINT" property="communityId"/>
+        <result column="community_name" jdbcType="VARCHAR" property="communityName"/>
+        <result column="serial_number" jdbcType="VARCHAR" property="serialNumber"/>
+        <result column="initial_measurement_base" jdbcType="DECIMAL" property="initialMeasurementBase"/>
+        <result column="total_charge_value" jdbcType="DECIMAL" property="totalChargeValue"/>
+        <result column="day_use_money" jdbcType="DECIMAL" property="dayUseMoney"/>
+        <result column="charge_count" jdbcType="INTEGER" property="chargeCount"/>
+        <result column="use_gas_type_id" jdbcType="BIGINT" property="useGasTypeId"/>
+        <result column="price_scheme_id" jdbcType="BIGINT" property="priceSchemeId"/>
+        <result column="current_ladder" jdbcType="SMALLINT" property="currentLadder"/>
+        <result column="current_price" jdbcType="DECIMAL" property="currentPrice"/>
+        <result column="valve_status" jdbcType="SMALLINT" property="valveStatus"/>
+        <result column="cycle_total_use_gas" jdbcType="DECIMAL" property="cycleTotalUseGas"/>
+        <result column="total_use_gas" jdbcType="DECIMAL" property="totalUseGas"/>
+        <result column="gas_1" jdbcType="DECIMAL" property="gas1"/>
+        <result column="price_1" jdbcType="DECIMAL" property="price1"/>
+        <result column="gas_2" jdbcType="DECIMAL" property="gas2"/>
+        <result column="price_2" jdbcType="DECIMAL" property="price2"/>
+        <result column="gas_3" jdbcType="DECIMAL" property="gas3"/>
+        <result column="price_3" jdbcType="DECIMAL" property="price3"/>
+        <result column="gas_4" jdbcType="DECIMAL" property="gas4"/>
+        <result column="price_4" jdbcType="DECIMAL" property="price4"/>
+        <result column="gas_5" jdbcType="DECIMAL" property="gas5"/>
+        <result column="price_5" jdbcType="DECIMAL" property="price5"/>
+        <result column="gas_6" jdbcType="DECIMAL" property="gas6"/>
+        <result column="price_6" jdbcType="DECIMAL" property="price6"/>
+        <result column="freezing_time" jdbcType="TIMESTAMP" property="freezingTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, meter_number, gas_meter_factory_id, gas_meter_factory_name, gas_meter_version_id, gas_meter_version_name, archive_id, gas_meter_id, gas_meter_name, city_id, city_name, area_id, area_name, street_id, street_name, community_id, community_name, serial_number, initial_measurement_base, total_charge_value, day_use_money, charge_count, use_gas_type_id, price_scheme_id, current_ladder, current_price, valve_status, cycle_total_use_gas, total_use_gas, gas_1, price_1, gas_2, price_2, gas_3, price_3, gas_4, price_4, gas_5, price_5, gas_6, price_6, freezing_time
+    </sql>
+
+</mapper>

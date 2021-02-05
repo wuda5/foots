@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.charges.dao.CustomerAccountMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.charges.entity.CustomerAccount">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="VARCHAR" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="account_code" jdbcType="VARCHAR" property="accountCode"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="account_money" jdbcType="DECIMAL" property="accountMoney"/>
+        <result column="give_money" jdbcType="DECIMAL" property="giveMoney"/>
+        <result column="settlement_lock" jdbcType="SMALLINT" property="settlementLock"/>
+        <result column="status" jdbcType="SMALLINT" property="status"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, account_code, customer_code, customer_name, account_money, give_money, settlement_lock, status, delete_status
+    </sql>
+
+    <select id="queryAccountByCharge" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select <include refid="Base_Column_List" /> from gt_customer_account where customer_code= #{customerCode} for update
+
+    </select>
+
+    <select id="queryAccountByParam" resultMap="BaseResultMap" parameterType="com.cdqckj.gmis.charges.entity.CustomerAccount">
+        SELECT
+            account.id,
+            account.create_user,
+            account.create_time,
+            account.update_user,
+            account.update_time,
+            account.company_code,
+            account.company_name,
+            account.org_id,
+            account.org_name,
+            account.business_hall_id,
+            account.business_hall_name,
+            account.account_code,
+            account.customer_code,
+            customer.customer_name,
+            account.account_money,
+            account.give_money,
+            account.settlement_lock,
+            account.status,
+            account.delete_status
+        FROM
+            gt_customer_account account
+        LEFT JOIN da_customer customer ON account.customer_code = customer.customer_code
+        WHERE
+            account.delete_status = 0
+        and account.customer_code= #{customerAccount.customerCode}
+    </select>
+
+</mapper>

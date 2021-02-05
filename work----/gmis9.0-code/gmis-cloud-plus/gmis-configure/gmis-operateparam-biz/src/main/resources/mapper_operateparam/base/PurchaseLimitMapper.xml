@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.operateparam.dao.PurchaseLimitMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.operateparam.entity.PurchaseLimit">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="company_code" jdbcType="CHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="limit_name" jdbcType="VARCHAR" property="limitName"/>
+        <result column="use_gas_type_id" jdbcType="BIGINT" property="useGasTypeId"/>
+        <result column="use_gas_type_name" jdbcType="VARCHAR" property="useGasTypeName"/>
+        <result column="limit_type" jdbcType="SMALLINT" property="limitType"/>
+        <result column="start_time" jdbcType="TIMESTAMP" property="startTime"/>
+        <result column="end_time" jdbcType="TIMESTAMP" property="endTime"/>
+        <result column="cycle" jdbcType="INTEGER" property="cycle"/>
+        <result column="max_charge_gas" jdbcType="INTEGER" property="maxChargeGas"/>
+        <result column="max_charge_money" jdbcType="INTEGER" property="maxChargeMoney"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        company_code, company_name, org_id, limit_name, use_gas_type_id, use_gas_type_name, limit_type, start_time, end_time, cycle, max_charge_gas, max_charge_money, data_status
+    </sql>
+
+    <select id="queryCustomerLimitInfo" parameterType="com.cdqckj.gmis.operateparam.vo.PurchaseLimitVO" resultMap="BaseResultMap">
+        SELECT
+            DISTINCT(pz.id),
+            pz.create_time,
+            pz.create_user,
+            pz.update_time,
+            pz.update_user,
+            pz.company_code,
+            pz.company_name,
+            pz.org_id,
+            pz.limit_name,
+            pz.use_gas_type_id,
+            pz.use_gas_type_name,
+            pz.limit_type,
+            pz.start_time,
+            pz.end_time,
+            pz.cycle,
+            pz.max_charge_gas,
+            pz.max_charge_money,
+            pz.data_status
+        FROM
+            pz_purchase_limit pz
+        INNER JOIN da_purchase_limit_customer da ON pz.id = da.limit_id AND da.delete_status = '0'
+        WHERE
+            da.customer_code = #{queryParams.customerCode}
+        <if test="queryParams.meterCode != null and queryParams.meterCode != ''">
+            AND da.gas_meter_code = #{queryParams.meterCode}
+        </if>
+            AND pz.data_status = 1
+    </select>
+
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gmis-admin-cloud</artifactId>
+        <groupId>com.cdqckj.gmis</groupId>
+        <version>c.2.3-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>gmis-pay</artifactId>
+    <name>${project.artifactId}</name>
+    <description>支付服务</description>
+    <packaging>pom</packaging>
+    <modules>
+        <module>gmis-onlinepay-api</module>
+        <module>gmis-onlinepay-server</module>
+        <module>gmis-onlinepay-controller</module>
+        <module>gmis-onlinepay-biz</module>
+        <module>gmis-onlinepay-entity</module>
+        <module>gmis-offlinepay-server</module>
+        <module>gmis-offlinepay-controller</module>
+        <module>gmis-offlinepay-biz</module>
+        <module>gmis-offlinepay-entity</module>
+    </modules>
+
+</project>

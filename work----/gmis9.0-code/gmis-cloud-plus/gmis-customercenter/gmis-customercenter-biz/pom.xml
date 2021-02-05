@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <parent>
+    <artifactId>gmis-customercenter</artifactId>
+    <groupId>com.cdqckj.gmis</groupId>
+    <version>c.2.3-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.cdqckj.gmis</groupId>
+  <artifactId>gmis-customercenter-biz</artifactId>
+  <version>c.2.3-SNAPSHOT</version>
+  <name>${project.artifactId}</name>
+  <description>客户服务API聚合服务-业务管理</description>
+  <dependencies>
+    <!-- 操作日志需要在Controller方法上标注注解 -->
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-log-starter</artifactId>
+    </dependency>
+    <!-- 注入当前登录人信息 需要在Controller方法参数上写注解和实体类 -->
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-security-starter</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-tenant-entity</artifactId>
+      <version>${gmis-project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-authority-api</artifactId>
+      <version>${gmis-project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-jwt-starter</artifactId>
+    </dependency>
+      <dependency>
+          <groupId>com.cdqckj.gmis</groupId>
+          <artifactId>gmis-devicearchive-entity</artifactId>
+          <version>${gmis-project.version}</version>
+          <scope>compile</scope>
+      </dependency>
+    <dependency>
+      <groupId>com.cdqckj.gmis</groupId>
+      <artifactId>gmis-userarchive-api</artifactId>
+      <version>${gmis-project.version}</version>
+      <scope>compile</scope>
+    </dependency>
+      <dependency>
+          <groupId>com.cdqckj.gmis</groupId>
+          <artifactId>gmis-charges-api</artifactId>
+          <version>${gmis-project.version}</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.cdqckj.gmis</groupId>
+          <artifactId>gmis-readmeter-entity</artifactId>
+        <version>${gmis-project.version}</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.cdqckj.gmis</groupId>
+          <artifactId>gmis-onlinepay-entity</artifactId>
+          <version>${gmis-project.version}</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.cdqckj.gmis</groupId>
+          <artifactId>gmis-onlinepay-api</artifactId>
+          <version>${gmis-project.version}</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.cdqckj.gmis</groupId>
+          <artifactId>gmis-customercenter-oauth</artifactId>
+          <version>${gmis-project.version}</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.cdqckj.gmis</groupId>
+          <artifactId>gmis-bizcenter-charges</artifactId>
+          <version>${gmis-project.version}</version>
+          <scope>compile</scope>
+      </dependency>
+  </dependencies>
+</project>

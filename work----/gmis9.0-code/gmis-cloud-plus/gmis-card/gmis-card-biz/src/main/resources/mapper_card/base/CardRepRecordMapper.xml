@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.card.dao.CardRepRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.card.entity.CardRepRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="CHAR" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="card_no" jdbcType="VARCHAR" property="cardNo"/>
+        <result column="gas_meter_code" jdbcType="VARCHAR" property="gasMeterCode"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="card_type" jdbcType="VARCHAR" property="cardType"/>
+        <result column="is_recovery_old_card" jdbcType="TINYINT" property="isRecoveryOldCard"/>
+        <result column="rep_card_type" jdbcType="VARCHAR" property="repCardType"/>
+        <result column="rep_card_method" jdbcType="VARCHAR" property="repCardMethod"/>
+        <result column="rep_card_gas" jdbcType="DECIMAL" property="repCardGas"/>
+        <result column="rep_card_money" jdbcType="DECIMAL" property="repCardMoney"/>
+        <result column="rep_card_desc" jdbcType="VARCHAR" property="repCardDesc"/>
+        <result column="rep_card_status" jdbcType="VARCHAR" property="repCardStatus"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,customer_code,customer_name
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, card_no, gas_meter_code, card_type, is_recovery_old_card, rep_card_type, rep_card_method, rep_card_gas, rep_card_money, rep_card_desc, rep_card_status, data_status
+    </sql>
+
+
+    <select id="queryFocusInfo" parameterType="java.lang.String" resultType="com.cdqckj.gmis.card.vo.CardRepRecordVO">
+        select
+            a.id,
+            a.create_time,
+            a.create_user,
+            a.update_time,
+            a.update_user,
+            a.company_code,
+            a.company_name,
+            a.org_id,
+            a.org_name,
+            a.business_hall_id,
+            a.business_hall_name,
+            a.card_no,
+            a.gas_meter_code,
+            a.card_type,
+            a.is_recovery_old_card,
+            a.rep_card_type,
+            a.rep_card_method,
+            a.rep_card_gas,
+            a.rep_card_money,
+            a.rep_card_desc,
+            a.rep_card_status,
+            m.gas_meter_number,
+            b.total_money
+        from gt_card_rep_record a
+        LEFT JOIN gt_customer_scene_charge_order b on a.id = b.business_no and b.toll_item_scene='CARD_REPLACEMENT'
+        LEFT JOIN da_customer_gas_meter_related c on c.gas_meter_code = a.gas_meter_code AND c.data_status = '1'
+        LEFT JOIN da_gas_meter m on a.gas_meter_code = m.gas_code
+        WHERE
+            a.data_status = 1
+        AND c.customer_code = #{customerCode}
+        <if test="gasMeterCode != null and gasMeterCode !=''">
+            AND a.gas_meter_code = #{gasMeterCode}
+        </if>
+        <if test="orgIds != null and orgIds.size() > 0 ">
+            and a.org_id in
+            <foreach collection="orgIds" open="(" close=")" item="orgIds" separator=",">
+                #{orgIds}
+            </foreach>
+        </if>
+        order by a.update_time desc
+    </select>
+</mapper>

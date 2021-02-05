@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.systemparam.dao.BusinessHallMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.systemparam.entity.BusinessHall">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="business_hall_address" jdbcType="VARCHAR" property="businessHallAddress"/>
+        <result column="contacts" jdbcType="VARCHAR" property="contacts"/>
+        <result column="telphone" jdbcType="VARCHAR" property="telphone"/>
+        <result column="business_hall_phone" jdbcType="VARCHAR" property="businessHallPhone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="point_type" jdbcType="VARCHAR" property="pointType"/>
+        <result column="is_sale" jdbcType="SMALLINT" property="isSale"/>
+        <result column="point_of_sale" jdbcType="SMALLINT" property="pointOfSale"/>
+        <result column="restrict_status" jdbcType="SMALLINT" property="restrictStatus"/>
+        <result column="balance" jdbcType="DECIMAL" property="balance"/>
+        <result column="single_limit" jdbcType="DECIMAL" property="singleLimit"/>
+        <result column="business_hall_status" jdbcType="SMALLINT" property="businessHallStatus"/>
+        <result column="delete_user" jdbcType="BIGINT" property="deleteUser"/>
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_name, business_hall_address, contacts, telphone,business_hall_phone, email, point_type, is_sale, point_of_sale, restrict_status, balance, single_limit, business_hall_status, delete_user, delete_time,delete_status
+    </sql>
+
+    <select id="findPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from pz_business_hall ${ew.customSqlSegment}
+    </select>
+</mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.card.dao.CardPriceSchemeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.card.entity.CardPriceScheme">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="gas_meter_code" jdbcType="VARCHAR" property="gasMeterCode"/>
+        <result column="write_card_price_id" jdbcType="BIGINT" property="writeCardPriceId"/>
+        <result column="into_meter_price_id" jdbcType="BIGINT" property="intoMeterPriceId"/>
+        <result column="pre_write_card_price_id" jdbcType="BIGINT" property="preWriteCardPriceId"/>
+        <result column="pre_into_meter_price_id" jdbcType="BIGINT" property="preIntoMeterPriceId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        gas_meter_code, write_card_price_id, into_meter_price_id, pre_write_card_price_id, pre_into_meter_price_id
+    </sql>
+
+</mapper>

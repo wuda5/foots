@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.userarchive.dao.PurchaseLimitCustomerMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.userarchive.entity.PurchaseLimitCustomer">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="limit_id" jdbcType="BIGINT" property="limitId"/>
+        <result column="customer_id" jdbcType="BIGINT" property="customerId"/>
+        <result column="gas_meter_id" jdbcType="BIGINT" property="gasMeterId"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        limit_id, customer_id, gas_meter_id
+    </sql>
+    <!-- 查询限购客户类型配置客户列表 -->
+    <select id="findLimitCustomerPage" parameterType="com.cdqckj.gmis.userarchive.vo.CustomerDeviceLimitVO" resultType="com.cdqckj.gmis.userarchive.dto.CustomerDeviceDTO">
+        SELECT A.id,
+               R.customer_charge_no AS customerChargeNo,
+               C.gas_meter_number As gasMeterNumber,
+
+               B.customer_code AS customerCode,
+               B.customer_name AS customerName,
+               C.gas_meter_address AS gasMeterAddress,
+               C. more_gas_meter_address AS moreGasMeterAddress,
+               C.use_gas_type_name AS useGasTypeName,
+               C.gas_code AS gasCode,
+
+               B.telphone,
+        f.gas_meter_factory_name AS gasMeterFactoryName,
+        v.gas_meter_version_name AS gasMeterVersionName
+        FROM da_purchase_limit_customer A
+        INNER JOIN da_customer B ON A.customer_code = B.customer_code
+        INNER JOIN da_gas_meter C ON A.gas_meter_code = C.gas_code
+        Inner join da_customer_gas_meter_related R on C.gas_code= R.gas_meter_code and R.data_status = 1
+        INNER JOIN pz_purchase_limit D ON A.limit_id = D.id
+        left join pt_gas_meter_factory f on  C.gas_meter_factory_id = f.id
+        left join pt_gas_meter_version v on  C.gas_meter_version_id = v.id
+        <where>
+            AND A.delete_status = 0
+            <if test="params.limitId!=null and params.limitId!= ''">
+                AND D.id = #{params.limitId}
+            </if>
+            <if test="params.customerChargeNo!=null and params.customerChargeNo!= ''">
+                AND R.customer_charge_no = #{params.customerChargeNo}
+            </if>
+            <if test="params.gasMeterNumber!=null and params.gasMeterNumber!= ''">
+                AND C.gas_meter_number = #{params.gasMeterNumber}
+            </if>
+
+            <if test="params.customerName!=null and params.customerName!= ''">
+                AND B.customer_name = #{params.customerName}
+            </if>
+            <if test="params.provinceId!=null and params.provinceId!= ''">
+                AND C.province_id = #{params.provinceId}
+            </if>
+            <if test="params.cityId!=null and params.cityId!= ''">
+                AND C.city_id = #{params.cityId}
+            </if>
+            <if test="params.areaId!=null and params.areaId!= ''">
+                AND C.area_id = #{params.areaId}
+            </if>
+            <if test="params.streetId!=null and params.streetId!= ''">
+                AND C.street_id = #{params.streetId}
+            </if>
+            <if test="params.communityId!=null and params.communityId!= ''">
+                AND C.community_id = #{params.communityId}
+            </if>
+            <if test="params.moreGasMeterAddress!=null and params.moreGasMeterAddress!= ''">
+                AND C.more_gas_meter_address  like concat ('%','${params.moreGasMeterAddress}','%')
+            </if>
+
+            <if test="params.telphone!=null and params.telphone!= ''">
+                AND B.telphone = #{params.telphone}
+            </if>
+        </where>
+        ORDER BY A.create_time DESC
+    </select>
+    <!-- 根据id 查询 -->
+    <select id="selectByIds" resultType="com.cdqckj.gmis.userarchive.entity.PurchaseLimitCustomer">
+        select * from da_purchase_limit_customer where id in
+        <foreach collection="limitIds" item="limitId" open="(" close=")" separator=",">
+            #{limitId}
+        </foreach>
+    </select>
+</mapper>

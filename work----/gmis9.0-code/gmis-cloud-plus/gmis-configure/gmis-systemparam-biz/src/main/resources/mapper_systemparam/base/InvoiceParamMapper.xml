@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.systemparam.dao.InvoiceParamMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.systemparam.entity.InvoiceParam">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="account_level" jdbcType="SMALLINT" property="accountLevel"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="taxpayer_no" jdbcType="VARCHAR" property="taxpayerNo"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="telephone" jdbcType="VARCHAR" property="telephone"/>
+        <result column="bank_name" jdbcType="VARCHAR" property="bankName"/>
+        <result column="bank_account" jdbcType="VARCHAR" property="bankAccount"/>
+        <result column="invoice_status" jdbcType="SMALLINT" property="invoiceStatus"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, account_level, name, taxpayer_no, address, telephone, bank_name, bank_account, invoice_status, remark, delete_status
+    </sql>
+
+</mapper>

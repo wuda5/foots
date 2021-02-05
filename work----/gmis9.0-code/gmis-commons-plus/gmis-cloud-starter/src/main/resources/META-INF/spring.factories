@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.cdqckj.gmis.cloud.OpenFeignAutoConfiguration , \
+    com.cdqckj.gmis.cloud.RibbonMetaFilterAutoConfiguration

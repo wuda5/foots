@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.charges.dao.ChargeRefundMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.charges.entity.ChargeRefund">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="BIGINT" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="refund_no" jdbcType="VARCHAR" property="refundNo"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_charge_no" jdbcType="VARCHAR" property="customerChargeNo"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="charge_no" jdbcType="VARCHAR" property="chargeNo"/>
+        <result column="charge_method_code" jdbcType="VARCHAR" property="chargeMethodCode"/>
+        <result column="charge_method_name" jdbcType="VARCHAR" property="chargeMethodName"/>
+        <result column="invoice_type" jdbcType="VARCHAR" property="invoiceType"/>
+        <result column="invoice_no" jdbcType="VARCHAR" property="invoiceNo"/>
+        <result column="charge_time" jdbcType="TIMESTAMP" property="chargeTime"/>
+        <result column="back_amount" jdbcType="DECIMAL" property="backAmount"/>
+        <result column="audit_remark" jdbcType="VARCHAR" property="auditRemark"/>
+        <result column="back_method_code" jdbcType="VARCHAR" property="backMethodCode"/>
+        <result column="back_method_name" jdbcType="VARCHAR" property="backMethodName"/>
+        <result column="back_reason" jdbcType="VARCHAR" property="backReason"/>
+        <result column="back_finish_time" jdbcType="TIMESTAMP" property="backFinishTime"/>
+        <result column="back_result" jdbcType="VARCHAR" property="backResult"/>
+        <result column="refund_status" jdbcType="VARCHAR" property="refundStatus"/>
+        <result column="whether_no_card" jdbcType="BIGINT" property="whetherNoCard"/>
+        <result column="charge_user_id" jdbcType="BIGINT" property="chargeUserId"/>
+        <result column="charge_user_name" jdbcType="VARCHAR" property="chargeUserName"/>
+        <result column="refund_failed_reason" jdbcType="VARCHAR" property="refundFailedReason"/>
+        <result column="audit_user_id" jdbcType="BIGINT" property="auditUserId"/>
+        <result column="audit_user_name" jdbcType="VARCHAR" property="auditUserName"/>
+        <result column="apply_user_id" jdbcType="BIGINT" property="applyUserId"/>
+        <result column="apply_user_name" jdbcType="VARCHAR" property="applyUserName"/>
+        <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime"/>
+        <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime"/>
+        <result column="refund_time" jdbcType="TIMESTAMP" property="refundTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, refund_no,customer_code,customer_name,customer_charge_no,
+         charge_no, charge_method_code, charge_method_name, invoice_type, invoice_no, charge_time,
+         back_amount, audit_remark, back_method_code, back_method_name, back_reason, back_finish_time,
+          back_result, refund_status,whether_no_card, charge_user_id, charge_user_name, audit_user_id, audit_user_name,
+          apply_user_id, apply_user_name,refund_failed_reason,apply_time,audit_time,refund_time
+    </sql>
+
+    <select id="sumChargeRefundByTime" resultType="java.math.BigDecimal">
+        select sum(back_amount) as sumBackAmount
+        from gt_charge_refund
+        where 1=1
+            <if test="startTime !=null">
+                and create_time &gt;= #{startTime}
+            </if>
+            <if test="endTime != null">
+                <![CDATA[ and create_time <= #{endTime} ]]>
+            </if>
+            and refund_status = #{refundStatus}
+            and create_user = #{chargeUserId}
+    </select>
+    <select id="sumChargeRefund" resultType="java.math.BigDecimal">
+        select sum(back_amount) as sumBackAmount
+        from gt_charge_refund
+        where
+           <![CDATA[ and create_time <= #{endTime} ]]>
+            and refund_status = #{refundStatus}
+            and create_user = #{chargeUserId}
+    </select>
+
+</mapper>

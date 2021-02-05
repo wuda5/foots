@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.securityed.dao.SecurityCheckProcessMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.securityed.entity.SecurityCheckProcess">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="security_check_number" jdbcType="VARCHAR" property="securityCheckNunber"/>
+        <result column="process_state" jdbcType="VARCHAR" property="processState"/>
+        <result column="process_user_id" jdbcType="VARCHAR" property="processUserId"/>
+        <result column="process_user_name" jdbcType="VARCHAR" property="processUserName"/>
+        <result column="process_desc" jdbcType="VARCHAR" property="processDesc"/>
+        <result column="process_time" jdbcType="VARCHAR" property="processTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, security_check_number, process_state, process_user_id, process_user_name, process_desc,process_time
+    </sql>
+
+</mapper>

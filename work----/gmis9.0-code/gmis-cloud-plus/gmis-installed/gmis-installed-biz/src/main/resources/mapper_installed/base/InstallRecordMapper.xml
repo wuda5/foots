@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.installed.dao.InstallRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.installed.entity.InstallRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="install_number" jdbcType="VARCHAR" property="installNumber"/>
+        <result column="install_type_id" jdbcType="BIGINT" property="installTypeId"/>
+        <result column="install_type_name" jdbcType="VARCHAR" property="installTypeName"/>
+        <result column="city_code" jdbcType="VARCHAR" property="cityCode"/>
+        <result column="city_name" jdbcType="VARCHAR" property="cityName"/>
+        <result column="area_code" jdbcType="VARCHAR" property="areaCode"/>
+        <result column="area_name" jdbcType="VARCHAR" property="areaName"/>
+        <result column="street_id" jdbcType="BIGINT" property="streetId"/>
+        <result column="street_name" jdbcType="VARCHAR" property="streetName"/>
+        <result column="community_id" jdbcType="BIGINT" property="communityId"/>
+        <result column="community_name" jdbcType="VARCHAR" property="communityName"/>
+        <result column="storied_id" jdbcType="BIGINT" property="storiedId"/>
+        <result column="storied_name" jdbcType="VARCHAR" property="storiedName"/>
+        <result column="floor_num" jdbcType="INTEGER" property="floorNum"/>
+        <result column="population" jdbcType="INTEGER" property="population"/>
+        <result column="address_remark" jdbcType="VARCHAR" property="addressRemark"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="telphone" jdbcType="VARCHAR" property="telphone"/>
+        <result column="id_type_id" jdbcType="BIGINT" property="idTypeId"/>
+        <result column="id_type_name" jdbcType="VARCHAR" property="idTypeName"/>
+        <result column="id_number" jdbcType="VARCHAR" property="idNumber"/>
+        <result column="accept_time" jdbcType="TIMESTAMP" property="acceptTime"/>
+        <result column="step_on_user_id" jdbcType="BIGINT" property="stepOnUserId"/>
+        <result column="step_on_user_name" jdbcType="VARCHAR" property="stepOnUserName"/>
+        <result column="step_on_time" jdbcType="TIMESTAMP" property="stepOnTime"/>
+        <result column="design_user_id" jdbcType="BIGINT" property="designUserId"/>
+        <result column="design_user_name" jdbcType="VARCHAR" property="designUserName"/>
+        <result column="design_time" jdbcType="TIMESTAMP" property="designTime"/>
+        <result column="review_user_id" jdbcType="BIGINT" property="reviewUserId"/>
+        <result column="review_user_name" jdbcType="VARCHAR" property="reviewUserName"/>
+        <result column="review_time" jdbcType="TIMESTAMP" property="reviewTime"/>
+        <result column="review_objection" jdbcType="VARCHAR" property="reviewObjection"/>
+        <result column="money" jdbcType="DECIMAL" property="money"/>
+        <result column="install_charge_user" jdbcType="BIGINT" property="installChargeUser"/>
+        <result column="charge_time" jdbcType="TIMESTAMP" property="chargeTime"/>
+        <result column="charge_status" jdbcType="VARCHAR" property="chargeStatus"/>
+        <result column="install_user_id" jdbcType="BIGINT" property="installUserId"/>
+        <result column="install_user_name" jdbcType="VARCHAR" property="installUserName"/>
+        <result column="install_time" jdbcType="TIMESTAMP" property="installTime"/>
+        <result column="return_visit_user" jdbcType="BIGINT" property="returnVisitUser"/>
+        <result column="return_visit_time" jdbcType="TIMESTAMP" property="returnVisitTime"/>
+        <result column="end_job_user_id" jdbcType="BIGINT" property="endJobUserId"/>
+        <result column="end_job_user_name" jdbcType="VARCHAR" property="endJobUserName"/>
+        <result column="end_job_time" jdbcType="TIMESTAMP" property="endJobTime"/>
+        <result column="stop_user_id" jdbcType="BIGINT" property="stopUserId"/>
+        <result column="stop_user_name" jdbcType="VARCHAR" property="stopUserName"/>
+        <result column="stop_time" jdbcType="TIMESTAMP" property="stopTime"/>
+        <result column="stop_reason" jdbcType="VARCHAR" property="stopReason"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+        <result column="order_status" jdbcType="SMALLINT" property="orderStatus"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, install_number, install_type_id, install_type_name, city_code, city_name, area_code, area_name, street_id, street_name, community_id, community_name, storied_id, storied_name, floor_num, population, address_remark, customer_name, telphone, id_type_id, id_type_name, id_number, accept_time, step_on_user_id, step_on_user_name, step_on_time, design_user_id, design_user_name, design_time, review_user_id, review_user_name, review_time, review_objection, money, install_charge_user, charge_time, charge_status, install_user_id, install_user_name, install_time, return_visit_user, return_visit_time, end_job_user_id, end_job_user_name, end_job_time, stop_user_id, stop_user_name, stop_time, stop_reason, data_status, order_status, remark
+    </sql>
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.charges.dao.CustomerEnjoyActivityRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.charges.entity.CustomerEnjoyActivityRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="charge_no" jdbcType="VARCHAR" property="chargeNo"/>
+        <result column="activity_id" jdbcType="BIGINT" property="activityId"/>
+        <result column="activity_name" jdbcType="VARCHAR" property="activityName"/>
+        <result column="toll_item_scene" jdbcType="VARCHAR" property="tollItemScene"/>
+        <result column="toll_item_id" jdbcType="BIGINT" property="tollItemId"/>
+        <result column="start_time" jdbcType="DATE" property="startTime"/>
+        <result column="end_time" jdbcType="DATE" property="endTime"/>
+        <result column="give_gas" jdbcType="DECIMAL" property="giveGas"/>
+        <result column="activity_money_type" jdbcType="VARCHAR" property="activityMoneyType"/>
+        <result column="activity_money" jdbcType="DECIMAL" property="activityMoney"/>
+        <result column="activity_percent" jdbcType="DECIMAL" property="activityPercent"/>
+        <result column="activity_scene" jdbcType="VARCHAR" property="activityScene"/>
+        <result column="use_gas_types" jdbcType="VARCHAR" property="useGasTypes"/>
+        <result column="total_money" jdbcType="DECIMAL" property="totalMoney"/>
+        <result column="total_gas" jdbcType="DECIMAL" property="totalGas"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        company_code, company_name, org_id, org_name, charge_no, activity_id, activity_name, toll_item_scene, toll_item_id, start_time, end_time, give_gas, activity_money_type, activity_money, activity_percent, activity_scene, use_gas_types, total_money, total_gas, data_status
+    </sql>
+
+</mapper>

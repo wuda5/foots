@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.readmeter.dao.ReadMeterMonthGasMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.readmeter.entity.ReadMeterMonthGas">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="customer_id" jdbcType="BIGINT" property="customerId"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="gas_meter_code" jdbcType="CHAR" property="gasMeterCode"/>
+        <result column="year" jdbcType="SMALLINT" property="year"/>
+        <result column="gas_meter_number" jdbcType="CHAR" property="gasMeterNumber"/>
+        <result column="gas_meter_name" jdbcType="VARCHAR" property="gasMeterName"/>
+        <result column="jan_total_gas" jdbcType="DECIMAL" property="janTotalGas"/>
+        <result column="feb_total_gas" jdbcType="DECIMAL" property="febTotalGas"/>
+        <result column="mar_total_gas" jdbcType="DECIMAL" property="marTotalGas"/>
+        <result column="apr_total_gas" jdbcType="DECIMAL" property="aprTotalGas"/>
+        <result column="may_total_gas" jdbcType="DECIMAL" property="mayTotalGas"/>
+        <result column="jun_total_gas" jdbcType="DECIMAL" property="junTotalGas"/>
+        <result column="jul_total_gas" jdbcType="DECIMAL" property="julTotalGas"/>
+        <result column="aug_total_gas" jdbcType="DECIMAL" property="augTotalGas"/>
+        <result column="sept_total_gas" jdbcType="DECIMAL" property="septTotalGas"/>
+        <result column="oct_total_gas" jdbcType="DECIMAL" property="octTotalGas"/>
+        <result column="nov_total_gas" jdbcType="DECIMAL" property="novTotalGas"/>
+        <result column="dec_total_gas" jdbcType="DECIMAL" property="decTotalGas"/>
+        <result column="jan_average" jdbcType="DECIMAL" property="janAverage"/>
+        <result column="feb_average" jdbcType="DECIMAL" property="febAverage"/>
+        <result column="mar_average" jdbcType="DECIMAL" property="marAverage"/>
+        <result column="apr_average" jdbcType="DECIMAL" property="aprAverage"/>
+        <result column="may_average" jdbcType="DECIMAL" property="mayAverage"/>
+        <result column="jun_average" jdbcType="DECIMAL" property="junAverage"/>
+        <result column="mul_average" jdbcType="DECIMAL" property="julAverage"/>
+        <result column="aug_average" jdbcType="DECIMAL" property="augAverage"/>
+        <result column="dept_average" jdbcType="DECIMAL" property="septAverage"/>
+        <result column="oct_average" jdbcType="DECIMAL" property="octAverage"/>
+        <result column="nov_average" jdbcType="DECIMAL" property="novAverage"/>
+        <result column="dec_average" jdbcType="DECIMAL" property="decAverage"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,year,
+        customer_id, customer_code, customer_name, gas_meter_code, gas_meter_number, gas_meter_name,
+        jan_total_gas, feb_total_gas, mar_total_gas, apr_total_gas, may_total_gas, jun_total_gas, jul_total_gas, aug_total_gas, sept_total_gas, oct_total_gas, nov_total_gas, dec_total_gas,
+        jan_average, feb_average, mar_average, apr_average, may_average, jun_average, jul_average, aug_average, sept_average, oct_average, nov_average, dec_average
+    </sql>
+
+</mapper>

@@ -1,0 +1,15 @@
+gmis:
+  mysql:
+    ip: ${MYSQL_IP:172.16.92.250}
+    port: 3306
+    username: root
+    password: 123456
+
+xxl.job:
+  executor:
+    ip: ${EXECUTOR_IP:127.0.0.1}
+    port: ${EXECUTOR_PORT:8771}
+
+spring:
+  profiles:
+    active: dev

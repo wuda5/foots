@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.readmeter.dao.ReadMeterDataMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.readmeter.entity.ReadMeterData">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="CHAR" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="customer_id" jdbcType="CHAR" property="customerId"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="gas_meter_code" jdbcType="CHAR" property="gasMeterCode"/>
+        <result column="gas_meter_number" jdbcType="CHAR" property="gasMeterNumber"/>
+        <result column="gas_meter_name" jdbcType="VARCHAR" property="gasMeterName"/>
+        <result column="more_gas_meter_address" jdbcType="VARCHAR" property="moreGasMeterAddress"/>
+        <result column="plan_id" jdbcType="BIGINT" property="planId"/>
+        <result column="book_id" jdbcType="BIGINT" property="bookId"/>
+        <result column="read_meter_year" jdbcType="SMALLINT" property="readMeterYear"/>
+        <result column="read_meter_month" jdbcType="SMALLINT" property="readMeterMonth"/>
+        <result column="read_time" jdbcType="DATE" property="readTime"/>
+        <result column="last_total_gas" jdbcType="DECIMAL" property="lastTotalGas"/>
+        <result column="last_read_time" jdbcType="DATE" property="lastReadTime"/>
+        <result column="current_total_gas" jdbcType="DECIMAL" property="currentTotalGas"/>
+        <result column="month_use_gas" jdbcType="DECIMAL" property="monthUseGas"/>
+        <result column="unit_price" jdbcType="DECIMAL" property="unitPrice"/>
+        <result column="cycle_total_use_gas" jdbcType="DECIMAL" property="cycleTotalUseGas"/>
+        <result column="use_gas_type_id" jdbcType="BIGINT" property="useGasTypeId"/>
+        <result column="use_gas_type_name" jdbcType="VARCHAR" property="useGasTypeName"/>
+        <result column="price_scheme_id" jdbcType="INTEGER" property="priceSchemeId"/>
+        <result column="process_status" jdbcType="VARCHAR" property="processStatus"/>
+        <result column="charge_status" jdbcType="VARCHAR" property="chargeStatus"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+        <result column="data_type" jdbcType="SMALLINT" property="dataType"/>
+        <result column="read_meter_user_id" jdbcType="BIGINT" property="readMeterUserId"/>
+        <result column="read_meter_user_name" jdbcType="VARCHAR" property="readMeterUserName"/>
+        <result column="record_user_id" jdbcType="BIGINT" property="recordUserId"/>
+        <result column="record_user_name" jdbcType="VARCHAR" property="recordUserName"/>
+        <result column="record_time" jdbcType="DATE" property="recordTime"/>
+        <result column="review_user_id" jdbcType="BIGINT" property="reviewUserId"/>
+        <result column="review_user_name" jdbcType="VARCHAR" property="reviewUserName"/>
+        <result column="review_time" jdbcType="TIMESTAMP" property="reviewTime"/>
+        <result column="review_objection" jdbcType="VARCHAR" property="reviewObjection"/>
+        <result column="settlement_user_id" jdbcType="BIGINT" property="settlementUserId"/>
+        <result column="settlement_user_name" jdbcType="VARCHAR" property="settlementUserName"/>
+        <result column="settlement_time" jdbcType="TIMESTAMP" property="settlementTime"/>
+        <result column="gas_owe_code" jdbcType="CHAR" property="gasOweCode"/>
+        <result column="free_amount" jdbcType="DECIMAL" property="freeAmount"/>
+        <result column="penalty" jdbcType="DECIMAL" property="penalty"/>
+        <result column="days_overdue" jdbcType="INTEGER" property="daysOverdue"/>
+        <result column="gas_1" jdbcType="DECIMAL" property="gas1"/>
+        <result column="price_1" jdbcType="DECIMAL" property="price1"/>
+        <result column="gas_2" jdbcType="DECIMAL" property="gas2"/>
+        <result column="price_2" jdbcType="DECIMAL" property="price2"/>
+        <result column="gas_3" jdbcType="DECIMAL" property="gas3"/>
+        <result column="price_3" jdbcType="DECIMAL" property="price3"/>
+        <result column="gas_4" jdbcType="DECIMAL" property="gas4"/>
+        <result column="price_4" jdbcType="DECIMAL" property="price4"/>
+        <result column="gas_5" jdbcType="DECIMAL" property="gas5"/>
+        <result column="price_5" jdbcType="DECIMAL" property="price5"/>
+        <result column="gas_6" jdbcType="DECIMAL" property="gas6"/>
+        <result column="price_6" jdbcType="DECIMAL" property="price6"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time, moreGasMeterAddress, unitPrice, readTime,last_read_time,data_type,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, customer_id,customer_code, customer_name, gas_meter_code, gas_meter_number, gas_meter_name, plan_id, book_id, read_meter_year, read_meter_month, last_total_gas, current_total_gas, month_use_gas, cycle_total_use_gas, use_gas_type_id, use_gas_type_name, price_scheme_id, process_status, charge_status, data_status, read_meter_user_id, read_meter_user_name, record_user_id, record_user_name, record_time, review_user_id, review_user_name, review_time, review_objection, settlement_user_id, settlement_user_name, settlement_time, gas_owe_code, free_amount, penalty, days_overdue, gas_1, price_1, gas_2, price_2, gas_3, price_3, gas_4, price_4, gas_5, price_5, gas_6, price_6
+    </sql>
+
+    <select id="pageReadMeterData"  resultType="com.cdqckj.gmis.readmeter.entity.ReadMeterData">
+        SELECT * from cb_read_meter_data d left join cb_read_meter_latest_record l on d.gas_meter_code = l.gas_meter_code
+        left join da_customer_gas_meter_related r on d.gas_meter_code = r.gas_meter_code
+        <where>
+            d.book_id = #{parmes.bookId} and d.read_meter_year = #{parmes.readMeterYear} and r.data_status = 1
+            and d.read_meter_month = #{parmes.readMeterMonth} and d.data_status = -1 and l.read_time &lt; d.read_time
+            <if test="parmes.moreGasMeterAddress !=null and parmes.moreGasMeterAddress!= ''">
+                and  d.more_gas_meter_address like concat ('%','${parmes.moreGasMeterAddress}','%')
+            </if>
+            <if test="parmes.customerChargeNo !=null and parmes.customerChargeNo!= ''">
+                and  r.customer_charge_no like concat ('%','${parmes.customerChargeNo}','%')
+            </if>
+            <if test="parmes.readMeterUserId !=null ">
+                and  d.read_meter_user_id = #{parmes.readMeterUserId}
+            </if>
+            <if test="parmes.useGasTypeId !=null ">
+                and  d.use_gas_type_id = #{parmes.useGasTypeId}
+            </if>
+            <!--<if test="parmes.customerChargeNo !=null and parmes.customerChargeNo!= ''">
+                and  d.customer_charge_no like concat ('%','${parmes.customerChargeNo}','%')
+            </if>-->
+            <if test="parmes.customerName !=null and parmes.customerName!= ''">
+                and  d.customer_name like concat ('%','${parmes.customerName}','%')
+            </if>
+            <if test="codeList != null">
+                and d.gas_meter_code in
+                <foreach collection="codeList" open="(" close=")" item="codeList" separator=",">
+                    #{codeList}
+                </foreach>
+            </if>
+            <if test="orgIds != null">
+                and d.org_id in
+                <foreach collection="orgIds" open="(" close=")" item="orgIds" separator=",">
+                    #{orgIds}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="selectGasCode"  resultType="com.cdqckj.gmis.readmeter.entity.ReadMeterData">
+        SELECT d.* from cb_read_meter_data d left join cb_read_meter_latest_record l on d.gas_meter_code = l.gas_meter_code
+        <where>
+            d.read_time = l.read_time and d.data_type = 0
+            <if test="codeList != null">
+                and l.gas_meter_code in
+                <foreach collection="codeList" open="(" close=")" item="codeList" separator=",">
+                    #{codeList}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="stsReadMeter"  resultType="com.cdqckj.gmis.statistics.vo.MeterPlanNowStsVo">
+        select b.read_meter_user_name as readMeterUserName,b.total_read_meter_count as totalMeter,
+        count(d.id) as readMeterCount from cb_read_meter_book b left join cb_read_meter_data d on b.id = d.book_id
+        and d.data_status = 0 and d.data_type = 0
+        <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+            and d.company_code = #{stsSearchParam.companyCode}
+        </if>
+        <if test="stsSearchParam.orgId != null and stsSearchParam.orgId != ''">
+            and d.org_id = #{stsSearchParam.orgId}
+        </if>
+        <if test="stsSearchParam.businessHallId != null and stsSearchParam.businessHallId != ''">
+            and d.business_hall_id = #{stsSearchParam.businessHallId}
+        </if>
+        <if test="stsSearchParam.stsDay != null">
+            and d.read_time = #{stsSearchParam.stsDay}
+        </if>
+    </select>
+
+    <select id="generalGasMeterReadSts" resultType="com.cdqckj.gmis.readmeter.vo.GasMeterReadStsVo">
+        SELECT
+            SUM(IF(data_status != 2, 1, 0)) totalCount,
+            SUM(IF(data_status = 0, 1, 0)) readCount,
+            SUM(IF(process_status = 'SETTLED', 1, 0)) settlementCount,
+            SUM(IF(process_status = 'APPROVED', 1, 0)) reviewCount
+        FROM
+             cb_read_meter_data crmd INNER JOIN cb_read_meter_book crmb ON crmb.id = crmd.book_id
+        WHERE
+              crmd.data_type = 0 AND crmd.read_time = #{stsSearchParam.stsDay} AND crmb.delete_status = 0 AND crmb.org_id IN ${dataScope}
+        <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND crmb.company_code = #{stsSearchParam.companyCode}
+              </if>
+              <if test="stsSearchParam.orgId != null">
+                 AND crmb.org_id = #{stsSearchParam.orgId}
+              </if>
+    </select>
+    <select id="queryPreviousData" resultType="com.cdqckj.gmis.readmeter.entity.ReadMeterData">
+        SELECT*FROM cb_read_meter_data t
+        WHERE t.gas_meter_code = #{gasMeterCode} AND t.customer_code = #{customerCode} AND t.record_time &lt; #{dataTime} AND t.data_status = 0 AND t.data_type = 0
+        ORDER BY t.create_time DESC LIMIT 1
+    </select>
+
+    <select id="totalCbNum" resultType="java.lang.Integer">
+        SELECT SUM(total_read_meter_count) FROM cb_read_meter_book WHERE delete_status = 0
+        <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+            AND company_code = #{stsSearchParam.companyCode}
+        </if>
+        <if test="stsSearchParam.orgId != null">
+            AND org_id = #{stsSearchParam.orgId}
+        </if>
+    </select>
+
+    <select id="stsGeneralGasMeter" resultType="java.math.BigDecimal">
+        SELECT
+            COALESCE(SUM(crmd.month_use_gas),0)
+        FROM
+            cb_read_meter_data crmd
+        WHERE
+            crmd.data_type = 0 AND crmd.charge_status = 'CHARGED' AND org_id IN ${dataScope}
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND crmd.company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND crmd.org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.createUserId != null">
+                AND crmd.create_user = #{stsSearchParam.createUserId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND crmd.create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND crmd.create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+    </select>
+
+    <select id="stsReadMeterByMonth" resultType="com.cdqckj.gmis.statistics.vo.MeterPlanNowStsVo">
+        SELECT
+            SUM(IF(data_status != 2, 1, 0)) totalMeter,
+            SUM(IF(data_status = 0, 1, 0)) readMeterCount,
+            read_meter_user_name,
+            read_time readMeterDate
+        FROM
+            cb_read_meter_data
+        WHERE read_time in ${readMeterDateStr}  AND org_id IN ${dataScope}
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.createUserId != null">
+                AND create_user = #{stsSearchParam.createUserId}
+            </if>
+            GROUP BY read_meter_user_id, read_time
+            ORDER BY read_meter_user_id ASC , read_time ASC
+    </select>
+
+</mapper>

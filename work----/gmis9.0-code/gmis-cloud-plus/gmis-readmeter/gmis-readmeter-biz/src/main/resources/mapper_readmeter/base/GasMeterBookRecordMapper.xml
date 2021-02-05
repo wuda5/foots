@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.readmeter.dao.GasMeterBookRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.readmeter.entity.GasMeterBookRecord">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="read_meter_book" jdbcType="BIGINT" property="readMeterBook"/>
+        <result column="number" jdbcType="SMALLINT" property="number"/>
+        <result column="community_id" jdbcType="BIGINT" property="communityId"/>
+        <result column="community_name" jdbcType="VARCHAR" property="communityName"/>
+        <result column="customer_id" jdbcType="BIGINT" property="customerId"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="street_id" jdbcType="BIGINT" property="streetId"/>
+        <result column="street_Name" jdbcType="VARCHAR" property="streetName"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="gas_meter_code" jdbcType="VARCHAR" property="gasMeterCode"/>
+        <result column="gas_meter_number" jdbcType="VARCHAR" property="gasMeterNumber"/>
+        <result column="gas_meter_type" jdbcType="VARCHAR" property="gasMeterType"/>
+        <result column="use_gas_type_id" jdbcType="BIGINT" property="useGasTypeId"/>
+        <result column="use_gas_type_name" jdbcType="VARCHAR" property="useGasTypeName"/>
+        <result column="more_gas_meter_address" jdbcType="VARCHAR" property="moreGasMeterAddress"/>
+        <result column="read_meter_user" jdbcType="BIGINT" property="readMeterUser"/>
+        <result column="read_meter_user_name" jdbcType="VARCHAR" property="readMeterUserName"/>
+        <result column="record_status" jdbcType="SMALLINT" property="recordStatus"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time, communityId, communityName, deleteStatus, streetId, streetName, readMeterUser, readMeterUserName, gas_meter_number, number,
+        read_meter_book, customer_id, customer_code, customer_name, gas_meter_code, gas_meter_type, use_gas_type_id, use_gas_type_name, more_gas_meter_address, record_status, sort
+    </sql>
+
+    <select id="pageBookRecord"  resultType="com.cdqckj.gmis.readmeter.vo.GasMeterBookRecordVo">
+        SELECT r.id as id, r.number as number, g.community_name as communityName,
+        g.more_gas_meter_address as moreGasMeterAddress,  c.customer_name as customerName, d.customer_charge_no as customerChargeNo,
+        r.gas_meter_code as gasMeterCode, r.gas_meter_number as gasMeterNumber, r.use_gas_type_name as use_gasTypeName
+        FROM cb_gas_meter_book_record r left join da_customer_gas_meter_related d on r.gas_meter_code = d.gas_meter_code and d.customer_charge_no = r.customer_charge_no
+        left join da_customer c on r.customer_code = c.customer_code left join da_gas_meter g on r.gas_meter_code = g.gas_code
+        <where>
+            r.delete_status = 0 and r.read_meter_book = #{parmes.readMeterBook}
+            <if test="parmes.gasMeterNumber !=null and parmes.gasMeterNumber!= ''">
+                and  g.gas_meter_number=#{parmes.gasMeterNumber}
+            </if>
+            <if test="parmes.customerName !=null and parmes.customerName!= ''">
+                and  c.customer_name=#{parmes.customerName}
+            </if>
+            <if test="parmes.moreGasMeterAddress !=null and parmes.moreGasMeterAddress!= ''">
+                and  g.more_gas_meter_address like concat ('%','${parmes.moreGasMeterAddress}','%')
+            </if>
+            <if test="parmes.streetId !=null">
+                and  g.street_id=#{parmes.streetId}
+            </if>
+            <if test="parmes.communityId !=null">
+                and  g.community_id=#{parmes.communityId}
+            </if>
+            <if test="parmes.useGasTypeId !=null">
+                and  g.use_gas_type_id=#{parmes.useGasTypeId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

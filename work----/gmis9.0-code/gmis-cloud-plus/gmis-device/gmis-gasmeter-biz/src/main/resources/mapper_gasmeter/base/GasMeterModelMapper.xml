@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.gasmeter.dao.GasMeterModelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.gasmeter.entity.GasMeterModel">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="company_id" jdbcType="BIGINT" property="companyId"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="gas_meter_version_id" jdbcType="BIGINT" property="gasMeterVersionId"/>
+        <result column="gas_meter_version_name" jdbcType="VARCHAR" property="gasMeterVersionName"/>
+        <result column="model_name" jdbcType="VARCHAR" property="modelName"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+        <result column="specification" jdbcType="DECIMAL" property="specification"/>
+        <result column="nominal_flow_rate" jdbcType="DECIMAL" property="nominalFlowRate"/>
+        <result column="max_flow" jdbcType="DECIMAL" property="maxFlow"/>
+        <result column="min_flow" jdbcType="DECIMAL" property="minFlow"/>
+        <result column="max_pressure" jdbcType="DECIMAL" property="maxPressure"/>
+        <result column="max_word_wheel" jdbcType="DECIMAL" property="maxWordWheel"/>
+        <result column="rotational_volume" jdbcType="DECIMAL" property="rotationalVolume"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_time,update_user,
+        company_id, company_code, company_name, gas_meter_version_id, gas_meter_version_name, model_name, data_status, specification, nominal_flow_rate, max_flow, min_flow, max_pressure, max_word_wheel, rotational_volume, delete_status
+    </sql>
+
+</mapper>

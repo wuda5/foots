@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.securityed.dao.SecurityCheckItemsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.securityed.entity.SecurityCheckItems">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="sc_result_id" jdbcType="BIGINT" property="scResultId"/>
+        <result column="sc_term_code" jdbcType="VARCHAR" property="scTermCode"/>
+        <result column="sc_term_name" jdbcType="VARCHAR" property="scTermName"/>
+        <result column="sc_term_items_id" jdbcType="BIGINT" property="scTermItemsId"/>
+        <result column="sc_term_items_name" jdbcType="VARCHAR" property="scTermItemsName"/>
+        <result column="hidden_danger" jdbcType="VARCHAR" property="hiddenDanger"/>
+        <result column="handle_info" jdbcType="VARCHAR" property="handleInfo"/>
+        <result column="handle_status" jdbcType="SMALLINT" property="handleStatus"/>
+        <result column="handle_user_id" jdbcType="BIGINT" property="handleUserId"/>
+        <result column="handle_time" jdbcType="TIMESTAMP" property="handleTime"/>
+        <result column="attache_info" jdbcType="VARCHAR" property="attacheInfo"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_time,create_user,update_user,update_time,
+        company_code, company_name, org_id, org_name, sc_result_id, sc_term_code, sc_term_name, sc_term_items_id, sc_term_items_name, hidden_danger, handle_info, handle_status, handle_user_id, handle_time, attache_info, remark
+    </sql>
+
+</mapper>

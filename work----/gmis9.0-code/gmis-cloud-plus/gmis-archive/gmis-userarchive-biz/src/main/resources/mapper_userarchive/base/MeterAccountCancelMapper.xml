@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.userarchive.dao.MeterAccountCancelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.userarchive.entity.MeterAccountCancel">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="BIGINT" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="gas_meter_code" jdbcType="VARCHAR" property="gasMeterCode"/>
+        <result column="card_amount" jdbcType="DECIMAL" property="cardAmount"/>
+        <result column="meter_amount" jdbcType="DECIMAL" property="meterAmount"/>
+        <result column="meter_total_gas" jdbcType="DECIMAL" property="meterTotalGas"/>
+        <result column="recharge_untometer_amount" jdbcType="DECIMAL" property="rechargeUntometerAmount"/>
+        <result column="is_restored_factory" jdbcType="TINYINT" property="isRestoredFactory"/>
+        <result column="is_back_card" jdbcType="TINYINT" property="isBackCard"/>
+        <result column="is_back_meter" jdbcType="TINYINT" property="isBackMeter"/>
+        <result column="reason" jdbcType="VARCHAR" property="reason"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, customer_code, customer_name, gas_meter_code, card_amount, meter_amount, meter_total_gas, recharge_untometer_amount, is_restored_factory, is_back_card, is_back_meter, reason
+    </sql>
+
+    <select id="stsCancelCustomerType" resultType="com.cdqckj.gmis.common.domain.sts.StsInfoBaseVo">
+        SELECT
+            COUNT(1) amount, customer_type_code type
+        FROM
+            gt_meter_account_cancel gmac INNER JOIN da_customer dc ON gmac.customer_code = dc.customer_code
+        WHERE
+            1 = 1
+            <if test="stsSearchParam.companyCode != null and stsSearchParam.companyCode != ''">
+                AND gmac.company_code = #{stsSearchParam.companyCode}
+            </if>
+            <if test="stsSearchParam.orgId != null">
+                AND gmac.org_id = #{stsSearchParam.orgId}
+            </if>
+            <if test="stsSearchParam.businessHallId != null">
+                AND gmac.business_hall_id = #{stsSearchParam.businessHallId}
+            </if>
+            <if test="stsSearchParam.createUserId != null">
+                AND gmac.create_user = #{stsSearchParam.createUserId}
+            </if>
+            <if test="stsSearchParam.startDay != null">
+                AND gmac.create_time <![CDATA[>=]]> #{stsSearchParam.startDay}
+            </if>
+            <if test="stsSearchParam.endDay != null">
+                AND gmac.create_time <![CDATA[<=]]> #{stsSearchParam.endDay}
+            </if>
+            GROUP BY dc.customer_type_code
+    </select>
+
+</mapper>

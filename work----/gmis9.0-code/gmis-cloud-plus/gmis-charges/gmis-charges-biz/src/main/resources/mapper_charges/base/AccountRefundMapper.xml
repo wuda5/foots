@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cdqckj.gmis.charges.dao.AccountRefundMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cdqckj.gmis.charges.entity.AccountRefund">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_user" jdbcType="BIGINT" property="createUser"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_user" jdbcType="BIGINT" property="updateUser"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="company_code" jdbcType="VARCHAR" property="companyCode"/>
+        <result column="company_name" jdbcType="VARCHAR" property="companyName"/>
+        <result column="org_id" jdbcType="BIGINT" property="orgId"/>
+        <result column="org_name" jdbcType="VARCHAR" property="orgName"/>
+        <result column="business_hall_id" jdbcType="BIGINT" property="businessHallId"/>
+        <result column="business_hall_name" jdbcType="VARCHAR" property="businessHallName"/>
+        <result column="account_code" jdbcType="VARCHAR" property="accountCode"/>
+        <result column="customer_code" jdbcType="VARCHAR" property="customerCode"/>
+        <result column="customer_name" jdbcType="VARCHAR" property="customerName"/>
+        <result column="account_money" jdbcType="DECIMAL" property="accountMoney"/>
+        <result column="refund_money" jdbcType="DECIMAL" property="refundMoney"/>
+        <result column="apply_user_id" jdbcType="BIGINT" property="applyUserId"/>
+        <result column="apply_user_name" jdbcType="VARCHAR" property="applyUserName"/>
+        <result column="apply_reason" jdbcType="VARCHAR" property="applyReason"/>
+        <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime"/>
+        <result column="method_code" jdbcType="VARCHAR" property="methodCode"/>
+        <result column="method_name" jdbcType="VARCHAR" property="methodName"/>
+        <result column="audit_user_id" jdbcType="BIGINT" property="auditUserId"/>
+        <result column="audit_user_name" jdbcType="VARCHAR" property="auditUserName"/>
+        <result column="audit_remark" jdbcType="VARCHAR" property="auditRemark"/>
+        <result column="audit_time" jdbcType="TIMESTAMP" property="auditTime"/>
+        <result column="refund_status" jdbcType="VARCHAR" property="refundStatus"/>
+        <result column="result_remark" jdbcType="VARCHAR" property="resultRemark"/>
+        <result column="finish_time" jdbcType="TIMESTAMP" property="finishTime"/>
+        <result column="data_status" jdbcType="SMALLINT" property="dataStatus"/>
+        <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,create_user,create_time,update_user,update_time,
+        company_code, company_name, org_id, org_name, business_hall_id, business_hall_name, account_code, customer_code, customer_name, account_money, refund_money, apply_user_id, apply_user_name, apply_reason, apply_time, method_code, method_name, audit_user_id, audit_user_name, audit_remark, audit_time, refund_status, result_remark, finish_time, data_status, delete_status
+    </sql>
+    <select id="pageListCount" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM  gt_account_refund t1
+        inner join da_customer t2 on t1.customer_code=t2.customer_code
+        <if test="req.customerName != null and req.customerName !=''">
+            and t1.customer_name=#{req.customerName}
+        </if>
+        <if test="req.auditStatus != null and req.auditStatus !=''">
+            and t1.refund_status in (#{req.auditStatus})
+        </if>
+        <if test="req.identityCardNo != null and req.identityCardNo !=''">
+            and t2.id_card=#{req.identityCardNo}
+        </if>
+        <if test="req.phone != null and req.phone !=''">
+            and t2.telphone=#{req.phone}
+        </if>
+        <if test="req.start != null">
+            and t1.create_time &gt;=#{req.start}
+        </if>
+        <if test="req.end != null">
+            and t1.create_time &lt;=#{req.end}
+        </if>
+        <if test="req.orgIds != null and req.orgIds.size()>0">
+            and t1.org_id in
+            <foreach collection="req.orgIds" open="(" close=")" item="orgId" separator=",">
+                #{orgId, jdbcType=BIGINT}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="pageList" resultType="com.cdqckj.gmis.charges.dto.AccountRefundResDTO">
+        SELECT
+        t1.*
+        FROM  gt_account_refund t1
+        inner join da_customer t2 on t1.customer_code=t2.customer_code
+        <if test="req.customerName != null and req.customerName !=''">
+            and t1.customer_name=#{req.customerName}
+        </if>
+        <if test="req.auditStatus != null and req.auditStatus !=''">
+            and t1.refund_status in (#{req.auditStatus})
+        </if>
+        <if test="req.identityCardNo != null and req.identityCardNo !=''">
+            and t2.id_card=#{req.identityCardNo}
+        </if>
+        <if test="req.phone != null and req.phone !=''">
+            and t2.telphone=#{req.phone}
+        </if>
+        <if test="req.start != null">
+            and t1.create_time &gt;=#{req.start}
+        </if>
+        <if test="req.end != null">
+            and t1.create_time &lt;=#{req.end}
+        </if>
+        <if test="req.orgIds != null and req.orgIds.size()>0">
+            and t1.org_id in
+            <foreach collection="req.orgIds" open="(" close=")" item="orgId" separator=",">
+                #{orgId, jdbcType=BIGINT}
+            </foreach>
+        </if>
+        ORDER BY t1.create_time desc
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="custPageListCount" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM  gt_customer_account t2
+        inner join da_customer t1 on 1=1
+        and t1.customer_code=t2.customer_code
+        and t2.status=1 and t2.delete_status=0
+        <if test="req.customerName != null and req.customerName !=''">
+            and t1.customer_name=#{req.customerName}
+        </if>
+        <if test="req.identityCardNo != null and req.identityCardNo !=''">
+            and t1.id_card=#{req.identityCardNo}
+        </if>
+        <if test="req.phone != null and req.phone !=''">
+            and t1.telphone=#{req.phone}
+        </if>
+        <if test="req.orgIds != null and req.orgIds.size()>0">
+            and t2.org_id in
+            <foreach collection="req.orgIds" open="(" close=")" item="orgId" separator=",">
+                #{orgId, jdbcType=BIGINT}
+            </foreach>
+        </if>
+
+    </select>
+
+    <select id="custPageList" resultType="com.cdqckj.gmis.charges.dto.CustomerAccountResDTO">
+        SELECT
+        t1.id_card as identityCardNo,
+        t1.telphone as phone,
+        t1.contact_address as address ,
+        t2.customer_code as customerCode,
+        t1.customer_name as customerName,
+        t2.account_code as customerName,
+        t2.account_money as accountMoney
+        FROM  gt_customer_account t2
+        inner join da_customer t1 on 1=1
+        and t1.customer_code=t2.customer_code
+        and t2.status=1 and t2.delete_status=0
+        <if test="req.customerName != null and req.customerName !=''">
+            and t1.customer_name=#{req.customerName}
+        </if>
+        <if test="req.identityCardNo != null and req.identityCardNo !=''">
+            and t1.id_card=#{req.identityCardNo}
+        </if>
+        <if test="req.phone != null and req.phone !=''">
+            and t1.telphone=#{req.phone}
+        </if>
+        <if test="req.orgIds != null and req.orgIds.size()>0">
+            and t2.org_id in
+            <foreach collection="req.orgIds" open="(" close=")" item="orgId" separator=",">
+                #{orgId, jdbcType=BIGINT}
+            </foreach>
+        </if>
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
+    <select id="sumAccountRefundByTime" resultType="java.math.BigDecimal">
+        select sum(refund_money) as sumBackAmount
+        from gt_account_refund
+        where 1=1
+        <if test="startTime !=null">
+            and create_time &gt;= #{startTime}
+        </if>
+        <if test="endTime != null">
+            <![CDATA[ and create_time <= #{endTime} ]]>
+        </if>
+        and refund_status = #{refundStatus}
+        and create_user = #{chargeUserId}
+    </select>
+</mapper>
