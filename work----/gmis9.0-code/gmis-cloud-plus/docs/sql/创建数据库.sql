@@ -1,4 +1,0 @@
-CREATE DATABASE IF NOT EXISTS `gmis_defaults` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-CREATE DATABASE IF NOT EXISTS `gmis_base_0000` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-CREATE DATABASE IF NOT EXISTS `gmis_zipkin` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-

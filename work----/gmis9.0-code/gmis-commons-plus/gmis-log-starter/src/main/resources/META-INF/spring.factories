@@ -1,5 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    com.cdqckj.gmis.log.LogAutoConfiguration
-org.springframework.context.ApplicationContextInitializer=\
-    com.cdqckj.gmis.log.init.ApplicationLoggerInitializer, \
-    com.cdqckj.gmis.log.MyMDCAdapterInitializer
